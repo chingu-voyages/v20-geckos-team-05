@@ -1,12 +1,84 @@
-.container {
+.app {
   text-align: center;
   display: flex;
   height: 100vh;
   width: 100vw;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
-.placeholder{
-  font-size: 30px;
+.header {
+margin-top: 10px;
+}
+
+.title {
+font-size: 30px;
+}
+
+.mainContainer {
+ height: 350px;
+ width: 700px;
+ border: solid red 1px;
+ display: flex;
+ flex-direction: row;
+}
+
+.currentYear {
+  margin-bottom: 10px;
+}
+
+.calenderDisplay {
+  width: 50%;
+  height: 100%;
+  border: solid green 1px;
  }
+
+.monthsDisplay {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 15px;
+}
+
+
+.daysDisplay {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 45px);
+}
+
+.day {
+  border: solid 1px black;
+}
+ 
+.eventsDisplay {
+  width: 50%;
+  height: 100%;
+  border: solid blue 1px;
+ }
+
+@media only screen and (max-width: 400px) {
+  .app {
+    height: 100vh;
+    width: 90vw;
+  }
+  .mainContainer {
+    height: 80vh;
+    width: 90vw;
+    flex-direction: column;
+  }
+  .calenderDisplay {
+    height: 50vh;
+    width: inherit;
+  }
+  .eventsDisplay {
+    height: 50vh;
+    width:  inherit;
+  }
+}
+
+.footer {
+  margin-bottom: 10px;
+}
