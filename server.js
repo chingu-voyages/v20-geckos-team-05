@@ -11,10 +11,19 @@ mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopo
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
+// Static  
 app.use(express.static(path.join(__dirname, './client/build')))
 
-app.get('/', (req, res) => {
+// Bodyparser
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+// Serve app
+app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, './client/build', 'index.html'))
-})
+});
+
+// Api router
+app.use('/api', require('./routes/index'));
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
