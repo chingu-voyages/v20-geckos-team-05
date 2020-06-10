@@ -22,13 +22,16 @@ const AppointmentSchema = new mongoose.Schema({
     required: true
   },
   people: {
-    type: String
+    type: String,
+    default: ''
   },
   location: {
-    type: String
+    type: String,
+    default: ''
   },
   description: {
-    type: String
+    type: String,
+    default: ''
   }
 })
 
