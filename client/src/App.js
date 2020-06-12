@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import CalenderDisplay from './components/calenderDisplay/calenderDisplay';
+import CalenderDisplay from './components/CalenderDisplay/calenderDisplay';
 
 function App() {
 
