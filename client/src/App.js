@@ -10,7 +10,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    fetch(process.env.API_URL || "http://localhost:5000/api")
+    fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api")
       .then((res) => res.json())
       .then((data) => data.appointments)
       .then((appointments) => {
