@@ -8,13 +8,31 @@
 }
 
 .modal-main {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   background: white;
-  width: 80%;
-  height: auto;
-  top: 50%;
+  width: 680px;
+  height: 330px;
+  top: 51.5%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.appointment-title {
+
+}
+
+.dates-and-times {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+
+}
+
+.appointment-extras {
+  display: flex;
+  flex-direction: column;
 }
 
 .display-block {

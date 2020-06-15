@@ -3,7 +3,7 @@ import "./Modal.css";
 
 class Modal extends React.Component {
   state = {
-    show: false,
+    show: true,
   };
 
   showModal = () => {
@@ -48,23 +48,44 @@ class Modal extends React.Component {
             <section className="modal-main">
               <button onClick={this.hideModal}>close</button>
               <form onSubmit={(e) => this.handleSubmit(e)}>
-                <label>Title</label>
-                <input type="text" name="title"></input>
-                <label>Start Date</label>
-                <input type="date" name="startDate"></input>
-                <label>End Date</label>
-                <input type="date" name="endDate"></input>
-                <label>Begins</label>
-                <input type="time" name="begins"></input>
-                <label>Ends</label>
-                <input type="time" name="ends"></input>
-                <label>People</label>
-                <input type="text" name="people"></input>
-                <label>Location</label>
-                <input type="text" name="location"></input>
-                <label>Description</label>
-                <input type="text" name="description"></input>
+                <div className="appointment-title">
+                  <label>Title</label>
+                  <input type="text" name="title"></input>
+                </div>
+                <div className="dates-and-times">
+                  <div>
+                    <label>Start Date</label>
+                    <input type="date" name="startDate"></input>
+                  </div>
+                  <div>
+                    <label>End Date</label>
+                    <input type="date" name="endDate"></input>
+                  </div>
+                  <div>
+                    <label>Begins</label>
+                    <input type="time" name="begins"></input>
+                  </div>
+                  <div>
+                    <label>Ends</label>
+                    <input type="time" name="ends"></input>
+                  </div>
+              </div>  
+              <div className="appointment-extras">
+                <div>
+                  <label>People</label>
+                  <input type="text" name="people"></input>
+                </div>
+                <div>
+                  <label>Location</label>
+                  <input type="text" name="location"></input>
+                </div>
+                <div>
+                  <label>Description</label>
+                  <input type="text" name="description"></input>
+                </div>
+              </div>
                 <button>Add event</button>
+
               </form>
             </section>
           )}
