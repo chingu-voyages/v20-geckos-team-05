@@ -3,7 +3,7 @@ import "./Modal.css";
 
 class Modal extends React.Component {
   state = {
-    show: true,
+    show: false,
   };
 
   showModal = () => {
@@ -53,34 +53,40 @@ class Modal extends React.Component {
                     <label>Title</label>
                     <input type="text" name="title"></input>
                   </div>
-                  <div className="dates-and-times">
-                    <div>
+                  <div className="dates">
+                    <div className="start-date">
                       <label>Start Date</label>
                       <input type="date" name="startDate"></input>
                     </div>
-                    <div>
+                    <div className="end-date">
                       <label>End Date</label>
                       <input type="date" name="endDate"></input>
                     </div>
-                    <div>
+                  </div>  
+
+                  <div className="times">
+
+                    <div className="start-time">
                       <label>Begins</label>
                       <input type="time" name="begins"></input>
                     </div>
-                    <div>
+
+                    <div className="end-time">
                       <label>Ends</label>
                       <input type="time" name="ends"></input>
                     </div>
-                  </div>  
+                    
+                  </div>
                   <div className="appointment-extras">
-                    <div>
+                    <div className="people-input">
                       <label>People</label>
                       <input type="text" name="people"></input>
                     </div>
-                    <div>
+                    <div className="location-input">
                       <label>Location</label>
                       <input type="text" name="location"></input>
                     </div>
-                    <div>
+                    <div className="description-input">
                       <label>Description</label>
                       <input type="text" name="description"></input>
                     </div>
