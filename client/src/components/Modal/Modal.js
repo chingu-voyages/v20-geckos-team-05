@@ -46,7 +46,7 @@ class Modal extends React.Component {
         >
           {this.state.show && (
             <section className="modal-main">
-              <div className="close-button" onClick={this.hideModal}>X</div>
+              <div className="close-button" onClick={this.hideModal}><strong>X</strong></div>
               <form onSubmit={(e) => this.handleSubmit(e)}>
                 <div className="entry-container" >
                   <div className="appointment-title">

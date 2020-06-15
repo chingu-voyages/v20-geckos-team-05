@@ -22,13 +22,19 @@
   position: relative;
   float: right;
   right: 5px;
+  top: 2px;
+  padding: 2px;
+}
+
+.close-button:hover {
+  color: red;
 }
 
 .entry-container {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 20px;
+  top: 30px;
   align-items: flex-start;
 }
 
@@ -193,7 +199,13 @@
 }
 
 .submit-button {
-  margin-top: 30px;
+  margin-top: 20px;
+}
+
+button {
+  width: 120px;
+  height: 25px;
+  box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
 }
 
 .display-block {
