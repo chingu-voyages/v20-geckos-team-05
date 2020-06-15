@@ -19,7 +19,7 @@ font-size: 30px;
 .mainContainer {
  height: 350px;
  width: 700px;
- border: solid red 1px;
+ border: solid black 1px;
  display: flex;
  flex-direction: row;
 }
@@ -27,7 +27,7 @@ font-size: 30px;
 .eventsDisplay {
   width: 50%;
   height: 100%;
-  border: solid blue 1px;
+  border-left: solid black 1px;
  }
 
 @media only screen and (max-width: 400px) {
