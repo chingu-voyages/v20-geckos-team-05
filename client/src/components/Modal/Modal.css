@@ -7,8 +7,7 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.modal-main {
-
+.modalMain {
   position: fixed;
   background: white;
   width: 680px;
@@ -18,7 +17,7 @@
   transform: translate(-50%, -50%);
 }
 
-.close-button {
+.closeButton {
   position: relative;
   float: right;
   right: 5px;
@@ -26,11 +25,11 @@
   padding: 2px;
 }
 
-.close-button:hover {
+.closeButton:hover {
   color: red;
 }
 
-.entry-container {
+.entryContainer {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -38,19 +37,19 @@
   align-items: flex-start;
 }
 
-.appointment-title {
+.appointmentTitle {
   margin-bottom: 10px;
   display: flex;
 }
 
-.appointment-title label {
+.appointmentTitle label {
   display: block;
   margin-left: 40px;
   width: 120px;
   text-align: left;
 }
 
-.appointment-title input {
+.appointmentTitle input {
   width: 400px;
   height: 25px
 }
@@ -60,31 +59,31 @@
   flex-direction: row;
 }
 
-.start-date {
+.startDate {
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
 
-.start-date label {
+.startDate label {
   display: block;
   margin-left: 40px;
   width: 120px;
   text-align: left;
 }
 
-.start-date input {
+.startDate input {
   width: 140px;
   height: 25px;
 }
 
-.end-date {
+.endDate {
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
 
-.end-date label {
+.endDate  label {
   display: block;
   margin-left: 8px;
   padding-left: 10px;
@@ -92,7 +91,7 @@
   text-align: left;
 }
 
-.end-date input {
+.endDate input {
   width: 140px;
   height: 25px;
 }
@@ -102,31 +101,31 @@
   flex-direction: row;
 }
 
-.start-time {
+.startTime {
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
 
-.start-time label {
+.startTime label {
   display: block;
   margin-left: 40px;
   width: 120px;
   text-align: left;
 }
 
-.start-time input {
+.startTime input {
   width: 140px;
   height: 25px;
 }
 
-.end-time {
+.endTime {
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
 
-.end-time label {
+.endTime label {
   display: block;
   margin-left: 8px;
   padding-left: 10px;
@@ -134,71 +133,71 @@
   text-align: left;
 }
 
-.end-time input {
+.endTime input {
   width: 140px;
   height: 25px;
 }
 
-.appointment-extras {
+.appointmentExtras {
   display: flex;
   flex-direction: column;
   text-align: start;
   margin-bottom: 10px;
 }
 
-.appointment-extras div {
+.appointmentExtras div {
   margin-bottom: 10px;
 }
 
-.people-input {
+.peopleInput {
   display: flex;
 }
 
-.location-input {
-  display: flex;
-}
-
-.description-input {
-  display: flex;
-}
-
-.people-input label {
+.peopleInput label {
   display: block;
   margin-left: 40px;
   width: 120px;
   text-align: left;
 }
 
-.location-input label {
+.peopleInput input {
+  width: 400px;
+  height: 25px
+}
+
+.locationInput {
+  display: flex;
+}
+
+.locationInput label {
   display: block;
   margin-left: 40px;
   width: 120px;
   text-align: left;
 }
 
-.description-input label {
+.locationInput input {
+  width: 400px;
+  height: 25px
+}
+
+.descriptionInput {
+  display: flex;
+}
+
+.descriptionInput label {
   display: block;
   margin-left: 40px;
   width: 120px;
   text-align: left;
 }
 
-.people-input input {
+.descriptionInput input {
   width: 400px;
   height: 25px
 }
 
-.location-input input {
-  width: 400px;
-  height: 25px
-}
-
-.description-input input {
-  width: 400px;
-  height: 25px
-}
-
-.submit-button {
+.submitButton {
   margin-top: 20px;
 }
 

@@ -8,10 +8,12 @@ function CalenderDisplay() {
     let currentMonth = today.getMonth();
 
     const months = [
-      { key: 0, name: "Jan", days: 31, startday: 3 }, { key: 1, name: "Feb", days: 28, startday: 6 }, { key: 2, name: "March", days: 31, startday: 0},
-      { key: 3, name: "April", days: 30, startday: 3}, { key: 4,name: "May",days: 31, startday: 5}, { key: 5,name: "June", days: 30, startday: 1},
-      { key: 6, name: "July", days: 31, startday: 3}, { key: 7, name: "Aug", days: 31, startday: 6 }, { key: 8, name: "Sept", days: 30, startday: 2},
-      { key: 9, name: "Oct", days: 30, startday: 4 }, { key: 10, name: "Nov", days: 30, startday: 0 }, { key: 11, name: "Dec", days: 31, startday: 2}
+      { key: 0, name: "Jan", days: 31, startday: 3 }, { key: 1, name: "Feb", days: 28, startday: 6 }, 
+      { key: 2, name: "March", days: 31, startday: 0}, { key: 3, name: "April", days: 30, startday: 3}, 
+      { key: 4, name: "May", days: 31, startday: 5}, { key: 5, name: "June", days: 30, startday: 1},
+      { key: 6, name: "July", days: 31, startday: 3}, { key: 7, name: "Aug", days: 31, startday: 6 }, 
+      { key: 8, name: "Sept", days: 30, startday: 2}, { key: 9, name: "Oct", days: 30, startday: 4 }, 
+      { key: 10, name: "Nov", days: 30, startday: 0 }, { key: 11, name: "Dec", days: 31, startday: 2}
     ];
 
     let days = [];
