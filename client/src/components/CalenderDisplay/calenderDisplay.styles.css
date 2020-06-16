@@ -1,7 +1,6 @@
 .calenderDisplay {
     width: 50%;
     height: 100%;
-    border: solid green 1px;
    }
 
 .currentYear {
@@ -13,8 +12,7 @@
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: 15px;
   }
-  
-  
+   
   .daysOfWeekDisplay {
     margin-left: 20px;
     margin-right: 20px;
@@ -28,7 +26,6 @@
     height: 40px;
     width: 40px;
   }
-
 
 @media only screen and (max-width: 400px) {
     .calenderDisplay {

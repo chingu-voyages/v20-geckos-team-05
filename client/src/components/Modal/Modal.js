@@ -45,26 +45,52 @@ class Modal extends React.Component {
           }
         >
           {this.state.show && (
-            <section className="modal-main">
-              <button onClick={this.hideModal}>close</button>
+            <section className="modalMain">
+              <div className="closeButton" onClick={this.hideModal}><strong>X</strong></div>
               <form onSubmit={(e) => this.handleSubmit(e)}>
-                <label>Title</label>
-                <input type="text" name="title"></input>
-                <label>Start Date</label>
-                <input type="date" name="startDate"></input>
-                <label>End Date</label>
-                <input type="date" name="endDate"></input>
-                <label>Begins</label>
-                <input type="time" name="begins"></input>
-                <label>Ends</label>
-                <input type="time" name="ends"></input>
-                <label>People</label>
-                <input type="text" name="people"></input>
-                <label>Location</label>
-                <input type="text" name="location"></input>
-                <label>Description</label>
-                <input type="text" name="description"></input>
-                <button>Add event</button>
+                <div className="entryContainer" >
+                  <div className="appointmentTitle">
+                    <label>Title</label>
+                    <input type="text" name="title"></input>
+                  </div>
+                  <div className="dates">
+                    <div className="startDate">
+                      <label>Start Date</label>
+                      <input type="date" name="startDate"></input>
+                    </div>
+                    <div className="endDate ">
+                      <label>End Date</label>
+                      <input type="date" name="endDate"></input>
+                    </div>
+                  </div>  
+                  <div className="times">
+                    <div className="startTime">
+                      <label>Begins</label>
+                      <input type="time" name="begins"></input>
+                    </div>
+                    <div className="endTime">
+                      <label>Ends</label>
+                      <input type="time" name="ends"></input>
+                    </div>                    
+                  </div>
+                  <div className="appointmentExtras">
+                    <div className="peopleInput">
+                      <label>People</label>
+                      <input type="text" name="people"></input>
+                    </div>
+                    <div className="locationInput">
+                      <label>Location</label>
+                      <input type="text" name="location"></input>
+                    </div>
+                    <div className="descriptionInput">
+                      <label>Description</label>
+                      <input type="text" name="description"></input>
+                    </div>
+                  </div>
+                </div>
+                <div className="submitButton">
+                    <button>Add event</button>
+                </div>
               </form>
             </section>
           )}

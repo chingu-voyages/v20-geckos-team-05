@@ -7,14 +7,204 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.modal-main {
+.modalMain {
   position: fixed;
   background: white;
-  width: 80%;
-  height: auto;
-  top: 50%;
+  width: 680px;
+  height: 330px;
+  top: 51.5%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.closeButton {
+  position: relative;
+  float: right;
+  right: 5px;
+  top: 2px;
+  padding: 2px;
+}
+
+.closeButton:hover {
+  color: red;
+}
+
+.entryContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 30px;
+  align-items: flex-start;
+}
+
+.appointmentTitle {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.appointmentTitle label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.appointmentTitle input {
+  width: 400px;
+  height: 25px
+}
+
+.dates {
+  display: flex;
+  flex-direction: row;
+}
+
+.startDate {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.startDate label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.startDate input {
+  width: 140px;
+  height: 25px;
+}
+
+.endDate {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.endDate  label {
+  display: block;
+  margin-left: 8px;
+  padding-left: 10px;
+  width: 100px;
+  text-align: left;
+}
+
+.endDate input {
+  width: 140px;
+  height: 25px;
+}
+
+.times {
+  display: flex;
+  flex-direction: row;
+}
+
+.startTime {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.startTime label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.startTime input {
+  width: 140px;
+  height: 25px;
+}
+
+.endTime {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.endTime label {
+  display: block;
+  margin-left: 8px;
+  padding-left: 10px;
+  width: 100px;
+  text-align: left;
+}
+
+.endTime input {
+  width: 140px;
+  height: 25px;
+}
+
+.appointmentExtras {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+.appointmentExtras div {
+  margin-bottom: 10px;
+}
+
+.peopleInput {
+  display: flex;
+}
+
+.peopleInput label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.peopleInput input {
+  width: 400px;
+  height: 25px
+}
+
+.locationInput {
+  display: flex;
+}
+
+.locationInput label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.locationInput input {
+  width: 400px;
+  height: 25px
+}
+
+.descriptionInput {
+  display: flex;
+}
+
+.descriptionInput label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.descriptionInput input {
+  width: 400px;
+  height: 25px
+}
+
+.submitButton {
+  margin-top: 20px;
+}
+
+button {
+  width: 120px;
+  height: 25px;
+  box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
 }
 
 .display-block {
