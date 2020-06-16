@@ -6,9 +6,12 @@ class AppointmentDisplay extends React.Component {
   
   render() {
     return (
-      <div className="appointmentsDisplayContainer contain">
-        <div className="selectedDay">Monday 15th June 2020</div>
-        <div className="appointmentsListBox contain">
+      <div className="appointmentsDisplayContainer">
+        <div className="selectedDay">
+          <div>Monday</div>
+          <div>JUNE 15</div>
+        </div>
+        <div className="appointmentsListBox">
           <div className="appointmentsList">
             {this.props.appointments.map((appointment) => (
               <div className="appointment" key={appointment._id}>
