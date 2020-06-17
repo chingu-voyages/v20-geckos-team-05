@@ -1,6 +1,10 @@
 import React from "react";
 import "./calenderDisplay.styles.css";
 
+import leftArrow from '../../assets/left-arrow.svg';
+import rightArrow from '../../assets/right-arrow.svg';
+
+
 class CalenderDisplay extends React.Component {
   state = {
     currentMonth: new Date().getMonth(),
@@ -90,25 +94,27 @@ class CalenderDisplay extends React.Component {
 
   render() {
     return (
-      <div className="calenderDisplay">
-        <div className="currrentYear">{this.state.currentYear}</div>
-        <div className="monthsDisplay">
-          <div>{this.state.prevMonth}</div>
-          <div>{this.state.currentMonthDisplay}</div>
-          <div>{this.state.nextMonth}</div>
-        </div>
-        <div className="daysOfWeekDisplay">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tues</div>
-          <div>Weds</div>
-          <div>Thurs</div>
-          <div>Fri</div>
-          <div>Sat</div>
-          {this.createCalendar()}
-        </div>
-        <button onClick={this.prevBtn}>prev</button>
-        <button onClick={this.nextBtn}>next</button>
+      <div className="calenderDisplayContainer">
+          <div className="calenderDisplay">
+            <div className="currentYear">{this.state.currentYear}</div>
+            <div className="monthsDisplay">
+              <div className="prevMonth">{this.state.prevMonth}</div>
+              <div className="currentMonth">{this.state.currentMonthDisplay}</div>
+              <div className="nextMonth">{this.state.nextMonth}</div>
+            </div>
+            <div className="daysOfWeekDisplay">
+              <div className="dayOfWeek">Su</div>
+              <div className="dayOfWeek">Mo</div>
+              <div className="dayOfWeek">Tu</div>
+              <div className="dayOfWeek">We</div>
+              <div className="dayOfWeek">Th</div>
+              <div className="dayOfWeek">Fr</div>
+              <div className="dayOfWeek">Sa</div>
+              {this.createCalendar()}
+            </div>
+            <div className="prevButton" onClick={this.prevBtn}><img src={leftArrow} alt="scroll to previous month"></img></div>
+            <div className="nextButton" onClick={this.nextBtn}><img src={rightArrow} alt="scroll to next month"></img></div>
+          </div>
       </div>
     );
   }
