@@ -9,25 +9,25 @@
 }
 
 .header {
-margin-top: 10px;
+  margin-top: 10px;
 }
 
 .title {
-font-size: 30px;
+  font-size: 30px;
 }
 
 .mainContainer {
- height: 350px;
- width: 700px;
- border: solid grey 1px;
- display: flex;
- flex-direction: row;
+  height: 400px;
+  width: 700px;
+  border: solid grey 1px;
+  display: flex;
+  flex-direction: row;
 }
- 
+
 .eventsDisplay {
   width: 50%;
   height: 100%;
- }
+}
 
 @media only screen and (max-width: 400px) {
   .app {
@@ -45,7 +45,7 @@ font-size: 30px;
   }
   .eventsDisplay {
     height: 50vh;
-    width:  inherit;
+    width: inherit;
   }
 }
 
