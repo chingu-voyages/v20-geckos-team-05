@@ -17,9 +17,9 @@
 }
 
 .mainContainer {
-  height: 450px;
+  height: 350px;
   width: 700px;
-  border: solid red 1px;
+  border: solid grey 1px;
   display: flex;
   flex-direction: row;
 }
@@ -27,7 +27,6 @@
 .eventsDisplay {
   width: 50%;
   height: 100%;
-  border: solid blue 1px;
 }
 
 @media only screen and (max-width: 400px) {
