@@ -1,36 +1,24 @@
 import React from "react";
 import "./calenderDisplay.styles.css";
 
-let today = new Date();
-let currentMonth = today.getMonth();
-let currentYear = today.getFullYear();
-
-const months = [
-  "Jan",
-  "Feb",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-let days = [];
-
-let prevMonth = months[currentMonth - 1];
-let nextMonth = months[currentMonth + 1];
-
 class CalenderDisplay extends React.Component {
-  render() {
-    let currentMonthDisplay = months[currentMonth];
+  state = {
+    currentMonth: new Date().getMonth(),
+    currentYear: new Date().getFullYear(),
+    prevMonth: this.props.months[new Date().getMonth() - 1],
+    nextMonth: this.props.months[new Date().getMonth() + 1],
+    currentMonthDisplay: this.props.months[new Date().getMonth()],
+  };
 
-    let startDayOfWeek = new Date(currentYear, currentMonth).getDay();
-    let numOfDays = 32 - new Date(currentYear, currentMonth, 32).getDate();
+  createCalendar() {
+    let days = [];
+    let startDayOfWeek = new Date(
+      this.state.currentYear,
+      this.state.currentMonth
+    ).getDay();
+    let numOfDays =
+      32 -
+      new Date(this.state.currentYear, this.state.currentMonth, 32).getDate();
     for (let i = 1; i <= numOfDays; i++) {
       days.push(i);
     }
@@ -44,55 +32,70 @@ class CalenderDisplay extends React.Component {
         daysToDisplay.push(<div className="day">{days.shift()}</div>);
       }
     }
+    console.log(daysToDisplay);
+    return daysToDisplay;
+  }
 
-    const prevBtn = () => {
-      if (currentMonth === 1) {
-        currentMonth--;
-        prevMonth = "Dec";
-        nextMonth = months[currentMonth + 1];
-        this.forceUpdate();
-      } else if (currentMonth === 0) {
-        currentYear--;
-        currentMonth = 11;
-        prevMonth = months[currentMonth - 1];
-        nextMonth = "Jan";
-        this.forceUpdate();
-      } else {
-        currentMonth--;
-        prevMonth = months[currentMonth - 1];
-        nextMonth = months[currentMonth + 1];
-        this.forceUpdate();
-      }
-    };
-    const nextBtn = () => {
-      if (currentMonth === 10) {
-        currentMonth++;
-        nextMonth = "Jan";
-        prevMonth = months[currentMonth - 1];
-        this.forceUpdate();
-      } else if (currentMonth === 11) {
-        currentYear++;
-        currentMonth = 0;
-        prevMonth = "Dec";
-        nextMonth = months[currentMonth + 1];
-        this.forceUpdate();
-      } else {
-        currentMonth++;
-        prevMonth = months[currentMonth - 1];
-        nextMonth = months[currentMonth + 1];
-        this.forceUpdate();
-      }
-    };
-    console.log(currentMonth);
-    console.log(prevMonth);
-    console.log(nextMonth);
+  prevBtn = () => {
+    if (this.state.currentMonth === 1) {
+      this.setState((prevState) => ({
+        currentMonth: prevState.currentMonth - 1,
+        prevMonth: "Dec",
+        nextMonth: this.props.months[prevState.currentMonth],
+        currentMonthDisplay: this.props.months[prevState.currentMonth - 1],
+      }));
+    } else if (this.state.currentMonth === 0) {
+      this.setState((prevState) => ({
+        currentYear: prevState.currentYear - 1,
+        currentMonth: 11,
+        prevMonth: this.props.months[10],
+        nextMonth: "Jan",
+        currentMonthDisplay: this.props.months[11],
+      }));
+    } else {
+      this.setState((prevState) => ({
+        currentMonth: prevState.currentMonth - 1,
+        prevMonth: this.props.months[prevState.currentMonth - 2],
+        nextMonth: this.props.months[prevState.currentMonth],
+        currentMonthDisplay: this.props.months[prevState.currentMonth - 1],
+      }));
+    }
+  };
+
+  nextBtn = () => {
+    if (this.state.currentMonth === 10) {
+      this.setState((prevState) => ({
+        currentMonth: prevState.currentMonth + 1,
+        nextMonth: "Jan",
+        prevMonth: this.props.months[prevState.currentMonth],
+        currentMonthDisplay: this.props.months[prevState.currentMonth + 1],
+      }));
+    } else if (this.state.currentMonth === 11) {
+      this.setState((prevState) => ({
+        currentYear: prevState.currentYear + 1,
+        currentMonth: 0,
+        prevMonth: "Dec",
+        nextMonth: this.props.months[1],
+        currentMonthDisplay: this.props.months[0],
+      }));
+    } else {
+      this.setState((prevState) => ({
+        currentMonth: prevState.currentMonth + 1,
+        prevMonth: this.props.months[prevState.currentMonth],
+        nextMonth: this.props.months[prevState.currentMonth + 2],
+        currentMonthDisplay: this.props.months[prevState.currentMonth + 1],
+      }));
+    }
+  };
+
+  render() {
     return (
       <div className="calenderDisplay">
-        <div className="currrentYear">{currentYear}</div>
+        <div className="currrentYear">{this.state.currentYear}</div>
         <div className="monthsDisplay">
-          <div>{prevMonth}</div>
-          <div>{currentMonthDisplay}</div>
-          <div>{nextMonth}</div>
+          <div>{this.state.prevMonth}</div>
+          <div>{this.state.currentMonthDisplay}</div>
+          <div>{this.state.nextMonth}</div>
         </div>
         <div className="daysOfWeekDisplay">
           <div>Sun</div>
@@ -102,13 +105,30 @@ class CalenderDisplay extends React.Component {
           <div>Thurs</div>
           <div>Fri</div>
           <div>Sat</div>
-          {daysToDisplay}
+          {this.createCalendar()}
         </div>
-        <button onClick={prevBtn}>prev</button>
-        <button onClick={nextBtn}>next</button>
+        <button onClick={this.prevBtn}>prev</button>
+        <button onClick={this.nextBtn}>next</button>
       </div>
     );
   }
 }
+
+CalenderDisplay.defaultProps = {
+  months: [
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ],
+};
 
 export default CalenderDisplay;
