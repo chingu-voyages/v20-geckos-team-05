@@ -12,6 +12,7 @@
   margin-top: 5px;
   font-size: 22px;
   font-weight: 600;
+  text-align: center;
 }
 
 .monthsDisplay {
@@ -64,10 +65,27 @@
 }
 
 @media only screen and (max-width: 400px) {
+  .calenderDisplayContainer {
+    height: 50vh;
+    width: inherit;
+  }
+
   .calenderDisplay {
     height: 50vh;
     width: inherit;
   }
+
+  .nextButton {
+    transform: translate(300px, -223px);
+    width: 20px;
+    height: 20px;
+  }
+
+  .prevButton {
+    width: 20px;
+    height: 20px;
+  }
+
   .eventsDisplay {
     height: 50vh;
     width: inherit;

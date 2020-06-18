@@ -33,12 +33,10 @@ class App extends React.Component {
         </div>
         <div className="mainContainer">
           <CalenderDisplay />
-          <div className="eventsDisplay">
-            <AppointmentDisplay
+          <AppointmentDisplay
               appointments={this.state.appointments}
               fetchAppointments={this.fetchAppointments}
             />
-          </div>
         </div>
         <div className="footer">This is the footer</div>
       </div>

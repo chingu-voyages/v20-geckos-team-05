@@ -36,7 +36,6 @@ class CalenderDisplay extends React.Component {
         daysToDisplay.push(<div className="day">{days.shift()}</div>);
       }
     }
-    console.log(daysToDisplay);
     return daysToDisplay;
   }
 
@@ -91,6 +90,9 @@ class CalenderDisplay extends React.Component {
       }));
     }
   };
+
+
+
 
   render() {
     return (
