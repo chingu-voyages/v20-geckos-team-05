@@ -3,18 +3,17 @@ import Modal from "../Modal/Modal";
 import "./AppointmentDisplay.css";
 
 class AppointmentDisplay extends React.Component {
-  handleDelete = (event) => {
+  handleDelete = async (event) => {
     const id = event.target.parentNode.getAttribute("listId");
     if (window.confirm("sure?")) {
-      fetch(
+      await fetch(
         process.env.REACT_APP_API_URL || `http://localhost:5000/api/${id}`,
         {
           method: "DELETE",
         }
-      )
-        .then(this.props.fetchAppointments)
-        .then(this.forceUpdate)
-        .catch((err) => console.log(err));
+      );
+      await this.props.fetchAppointments();
+      this.forceUpdate();
     }
   };
 
