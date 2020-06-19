@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   fetchAppointments = () => {
-    fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api")
+    return fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api")
       .then((res) => res.json())
       .then((data) => data.appointments)
       .then((appointments) => {
