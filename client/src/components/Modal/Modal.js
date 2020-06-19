@@ -87,7 +87,7 @@ class Modal extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const appointment = {
       title: event.target.title.value,
@@ -100,11 +100,14 @@ class Modal extends React.Component {
       description: event.target.description.value,
     };
     if (this.validate()) {
-      fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(appointment),
-      });
+      await fetch(
+        process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(appointment),
+        }
+      );
       this.setState({ showModal: false });
       this.props.fetchAppointments();
     }

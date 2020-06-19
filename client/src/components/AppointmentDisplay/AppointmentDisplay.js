@@ -3,6 +3,20 @@ import Modal from "../Modal/Modal";
 import "./AppointmentDisplay.css";
 
 class AppointmentDisplay extends React.Component {
+  handleDelete = async (event) => {
+    const id = event.target.parentNode.getAttribute("listId");
+    if (window.confirm("sure?")) {
+      await fetch(
+        process.env.REACT_APP_API_URL || `http://localhost:5000/api/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      await this.props.fetchAppointments();
+      this.forceUpdate();
+    }
+  };
+
   render() {
     return (
       <div className="appointmentsDisplayContainer">
@@ -16,7 +30,12 @@ class AppointmentDisplay extends React.Component {
         <div className="appointmentsListBox">
           <div className="appointmentsList">
             {this.props.appointments.map((appointment) => (
-              <div className="appointment" key={appointment._id}>
+              <div
+                className="appointment"
+                key={appointment._id}
+                listId={appointment._id}
+              >
+                <span onClick={this.handleDelete}>X </span>
                 {appointment.begins.substring(11, 16)} {appointment.title}
               </div>
             ))}
