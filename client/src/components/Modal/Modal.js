@@ -106,7 +106,7 @@ class Modal extends React.Component {
         body: JSON.stringify(appointment),
       })
         .then(this.setState({ showModal: false }))
-        .then(this.props.fetchAppointments())
+        .then(this.props.fetchAppointments)
         .catch((err) => console.log(err));
     }
   };
