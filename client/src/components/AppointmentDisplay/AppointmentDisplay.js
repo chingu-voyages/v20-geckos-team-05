@@ -4,14 +4,12 @@ import "./AppointmentDisplay.css";
 
 class AppointmentDisplay extends React.Component {
   handleDelete = async (event) => {
-    const id = event.target.parentNode.getAttribute("listId");
+    const id = event.target.parentNode.getAttribute("listid");
+    let url = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
     if (window.confirm("sure?")) {
-      await fetch(
-        process.env.REACT_APP_API_URL || `http://localhost:5000/api/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      await fetch(`${url}/${id}`, {
+        method: "DELETE",
+      });
       await this.props.fetchAppointments();
       this.forceUpdate();
     }
@@ -33,7 +31,7 @@ class AppointmentDisplay extends React.Component {
               <div
                 className="appointment"
                 key={appointment._id}
-                listId={appointment._id}
+                listid={appointment._id}
               >
                 <span onClick={this.handleDelete}>X </span>
                 {appointment.begins.substring(11, 16)} {appointment.title}
