@@ -32,12 +32,14 @@ class CalenderDisplay extends React.Component {
       if (days[i] <= startDayOfWeek) {
         daysToDisplay.push(
           <div
+            key={i}
             className={`${this.state.currentMonth} ${this.state.currentYear} day`}
           ></div>
         );
       } else {
         daysToDisplay.push(
           <div
+            key={i}
             className={`${this.state.currentMonth} ${this.state.currentYear} day`}
           >
             {days.shift()}
