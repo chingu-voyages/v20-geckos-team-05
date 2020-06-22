@@ -1,0 +1,94 @@
+.calenderDisplayContainer {
+  width: 50%;
+  height: 100%;
+}
+
+.calenderDisplay {
+}
+
+.currentYear {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.monthsDisplay {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.prevMonth {
+}
+
+.nextMonth {
+}
+
+.daysOfWeekDisplay {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 45px);
+}
+
+.dayOfWeek {
+  font-size: 14px;
+}
+
+.day {
+  font-size: 14px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+}
+
+.prevButton {
+  width: 30px;
+  height: 30px;
+  transform: translate(5px, -200px);
+}
+
+.nextButton {
+  width: 30px;
+  height: 30px;
+  transform: translate(310px, -232px);
+}
+
+.selected {
+  color: red;
+}
+
+@media only screen and (max-width: 400px) {
+  .calenderDisplayContainer {
+    height: 50vh;
+    width: inherit;
+  }
+
+  .calenderDisplay {
+    height: 50vh;
+    width: inherit;
+  }
+
+  .nextButton {
+    transform: translate(300px, -223px);
+    width: 20px;
+    height: 20px;
+  }
+
+  .prevButton {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eventsDisplay {
+    height: 50vh;
+    width: inherit;
+  }
+}

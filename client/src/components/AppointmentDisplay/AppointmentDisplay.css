@@ -1,0 +1,46 @@
+.appointmentsDisplayContainer {
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://images.unsplash.com/photo-1533119408463-b0f487583ff6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+    height: 100%;
+    width: 50%;
+}
+
+.selectedDay {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 60%;
+    align-self: center;
+    text-align: left;
+}
+
+.appointmentsListBox {
+    margin-bottom: 10px;
+    width: 60%;
+    height: 70%;
+    align-self: center;
+    background: slategray;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+
+.appointmentsList {
+    text-align: left;
+    margin-top: 5px;
+}
+
+.appointment {
+    color: white;
+    position: relative;
+    left: 10px;
+    margin-bottom: 2px;
+}
+
+@media only screen and (max-width: 400px) {
+    .appointmentsDisplayContainer {
+        height: 50vh;
+        width: inherit;
+    }
+}

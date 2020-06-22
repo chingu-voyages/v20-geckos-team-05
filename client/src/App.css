@@ -1,12 +1,53 @@
-.container {
+.app {
   text-align: center;
   display: flex;
   height: 100vh;
   width: 100vw;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
-.placeholder{
+.header {
+  margin-top: 10px;
+}
+
+.title {
   font-size: 30px;
- }
+}
+
+.mainContainer {
+  height: 380px;
+  width: 700px;
+  border: solid grey 1px;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 400px) {
+  .app {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .header {
+    display: none;
+  }
+  
+  .mainContainer {
+    height: 80vh;
+    width: 90vw;
+    flex-direction: column;
+    align-self: center;
+  }
+  /* temporary */
+  .footer {
+    display: none;
+  }
+}
+
+

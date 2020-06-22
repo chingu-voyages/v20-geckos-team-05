@@ -1,0 +1,313 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modalMain {
+  position: fixed;
+  background: white;
+  width: 680px;
+  height: 330px;
+  top: 51.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.closeButton {
+  position: relative;
+  float: right;
+  right: 5px;
+  top: 2px;
+  padding: 2px;
+}
+
+.closeButton:hover {
+  color: red;
+}
+
+.entryContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 30px;
+  align-items: flex-start;
+}
+
+.appointmentTitle {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.appointmentTitle label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.appointmentTitle input {
+  width: 400px;
+  height: 25px;
+}
+
+.dates {
+  display: flex;
+  flex-direction: row;
+}
+
+.startDate {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.startDate label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.startDate input {
+  width: 140px;
+  height: 25px;
+}
+
+.endDate {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.endDate label {
+  display: block;
+  margin-left: 8px;
+  padding-left: 10px;
+  width: 100px;
+  text-align: left;
+}
+
+.endDate input {
+  width: 140px;
+  height: 25px;
+}
+
+.times {
+  display: flex;
+  flex-direction: row;
+}
+
+.startTime {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.startTime label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.startTime input {
+  width: 140px;
+  height: 25px;
+}
+
+.endTime {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.endTime label {
+  display: block;
+  margin-left: 8px;
+  padding-left: 10px;
+  width: 100px;
+  text-align: left;
+}
+
+.endTime input {
+  width: 140px;
+  height: 25px;
+}
+
+.appointmentExtras {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+.appointmentExtras div {
+  margin-bottom: 10px;
+}
+
+.peopleInput {
+  display: flex;
+}
+
+.peopleInput label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.peopleInput input {
+  width: 400px;
+  height: 25px;
+}
+
+.locationInput {
+  display: flex;
+}
+
+.locationInput label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.locationInput input {
+  width: 400px;
+  height: 25px;
+}
+
+.descriptionInput {
+  display: flex;
+}
+
+.descriptionInput label {
+  display: block;
+  margin-left: 40px;
+  width: 120px;
+  text-align: left;
+}
+
+.descriptionInput input {
+  width: 400px;
+  height: 25px;
+}
+
+.submitButton {
+  margin-top: 20px;
+}
+
+button {
+  width: 120px;
+  height: 25px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.error {
+  color: red;
+}
+
+@media only screen and (max-width: 400px) {
+  .modalMain {
+    width: 90vw;
+    height: 65vh;
+    bottom: 25%;
+  }
+
+  .appointmentTitle label {
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+  }
+
+  .appointmentTitle input {
+    width: 200px;
+    height: 25px;
+  }
+
+  .dates {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .startDate label {
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+  }
+
+  .endDate label {
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+    padding-left: 0px;
+  }
+
+  .times {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .startTime label {
+    display: block;
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+  }
+
+  .endTime label {
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+    padding-left: 0px;
+  }
+
+  .peopleInput label {
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+  }
+
+  .peopleInput input {
+    width: 200px;
+    height: 25px;
+  }
+
+  .locationInput label {
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+  }
+
+  .locationInput input {
+    width: 200px;
+    height: 25px;
+  }
+
+  .descriptionInput label {
+    margin-left: 10px;
+    width: 90px;
+    text-align: left;
+  }
+
+  .descriptionInput input {
+    width: 200px;
+    height: 25px;
+  }
+
+  .submitButton {
+    margin-top: 30px;
+  }
+}
