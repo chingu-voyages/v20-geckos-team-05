@@ -19,34 +19,34 @@
   margin-left: 20px;
 }
 
- .section {
-     text-align: left;
-  }
+.section {
+  text-align: left;
+}
 
-  .name {
-      margin-bottom: 5px;
-  }
+.name {
+  margin-bottom: 5px;
+}
 
-  .logo {
-      height: 20px;
-      width: 20px;
-      margin-right: 3px;
-  }
+.logo {
+  height: 18px;
+  width: 18px;
+  margin-right: 3px;
+}
 
-  .githubLogo {
-    margin-right: 5px;  
-  }
+.githubLogo {
+  margin-right: 2px;  
+}
 
-  .twitterLogo {
-    height: 25px;
-    width: 25px;
-  }
+.twitterLogo {
+  height: 22px;
+  width: 22px;
+}
 
-  .socialSection {
-    display: flex;
-    flex-direction: row; 
-  }
-
+.socialSection {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+}
 
   .attributeSection {
     width: 65%;
