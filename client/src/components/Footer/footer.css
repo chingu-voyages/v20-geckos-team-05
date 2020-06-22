@@ -1,0 +1,58 @@
+.footerContainer {
+    width: 100%;
+    height: 70px;
+    background: lightblue; 
+    /* position: fixed; */
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .creatorSection {
+    width: 35%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+
+ .section {
+     text-align: left;
+  }
+
+  .name {
+      margin-bottom: 5px;
+  }
+
+  .logo {
+      height: 20px;
+      width: 20px;
+      margin-right: 3px;
+  }
+
+  .githubLogo {
+    margin-right: 5px;  
+  }
+
+  .twitterLogo {
+    height: 25px;
+    width: 25px;
+  }
+
+  .socialSection {
+    display: flex;
+    flex-direction: row; 
+  }
+
+
+  .attributeSection {
+    width: 50%;
+  }
+
+
+
+  @media only screen and (max-width: 400px) { 
+    .footerContainer {
+        display: none;
+  }
+}

@@ -3,6 +3,7 @@ import "./App.css";
 
 import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
 import AppointmentDisplay from "./components/AppointmentDisplay/AppointmentDisplay";
+import Footer from './components/Footer/footer';
 
 class App extends React.Component {
   state = {
@@ -59,7 +60,7 @@ class App extends React.Component {
             days={this.props.days}
           />
         </div>
-        <div className="footer">This is the footer</div>
+        <Footer />
       </div>
     );
   }
