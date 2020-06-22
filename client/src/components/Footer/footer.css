@@ -1,0 +1,99 @@
+.footerContainer {
+    width: 100%;
+    height: 60px;
+    background: lightblue; 
+    /* position: fixed; */
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+.creatorSection {
+  width: 35%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.info {
+  margin-left: 20px;
+}
+
+ .section {
+     text-align: left;
+  }
+
+  .name {
+      margin-bottom: 5px;
+  }
+
+  .logo {
+      height: 20px;
+      width: 20px;
+      margin-right: 3px;
+  }
+
+  .githubLogo {
+    margin-right: 5px;  
+  }
+
+  .twitterLogo {
+    height: 25px;
+    width: 25px;
+  }
+
+  .socialSection {
+    display: flex;
+    flex-direction: row; 
+  }
+
+
+  .attributeSection {
+    width: 65%;
+    text-align: right;
+    margin-right: 20px;
+    font-size: 10px;
+  }
+
+  .roundIcons {
+    margin-bottom: 3px;
+  }
+
+
+
+@media only screen and (max-width: 400px) { 
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .creatorSection {
+    font-size: 10px;
+    width: 90vw;
+    position: relative;
+    left: 25%;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  .info {
+    display: none;
+  }
+
+  .attributeSection {
+    width: 90vw;
+    text-align: center;
+    font-size: 6px;
+  }
+
+  .logo {
+    height: 10px;
+    width: 10px;
+    margin-right: 3px;
+  } 
+
+  .twitterLogo {
+    height: 15px;
+    width: 15px;
+  }
+}
