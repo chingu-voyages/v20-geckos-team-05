@@ -10,7 +10,7 @@ function Footer () {
     return (
         <div className="footerContainer">
             <div className="creatorSection">
-                <div className="info">
+                <div className=" section info">
                     Built by:
                 </div>
                 <div className="section sectionOne">
@@ -23,7 +23,7 @@ function Footer () {
                         </a>
                         <a href="https://twitter.com/jon_hill33"  target="_blank" className="logo twitterLogo">
                             <img src={twitterLogo} />
-                            </a>
+                        </a>
                         <a href="https://www.linkedin.com/in/jonathan-hill-1b293339/"  target="_blank"  className="logo linkedInLogo">
                             <img src={linkedInLogo} />
                         </a>
@@ -42,6 +42,8 @@ function Footer () {
             </div>
 
             <div className="attributeSection">
+            <div className="roundIcons">Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div>Twitter icon icon by Icons8</div>
 
             </div>
         </div>
