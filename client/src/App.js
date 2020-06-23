@@ -3,7 +3,7 @@ import "./App.css";
 
 import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
 import AppointmentDisplay from "./components/AppointmentDisplay/AppointmentDisplay";
-import Footer from './components/Footer/footer';
+import Footer from "./components/Footer/footer";
 
 class App extends React.Component {
   state = {
