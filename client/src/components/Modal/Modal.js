@@ -66,7 +66,6 @@ class Modal extends React.Component {
         location: event.target.location.value,
         description: event.target.description.value,
       };
-      console.log(appointment);
       await fetch(
         process.env.REACT_APP_API_URL || "http://localhost:5000/api",
         {
