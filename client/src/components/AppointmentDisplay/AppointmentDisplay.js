@@ -27,16 +27,22 @@ class AppointmentDisplay extends React.Component {
         </div>
         <div className="appointmentsListBox">
           <div className="appointmentsList">
-            {this.props.appointments.map((appointment) => (
-              <div
-                className="appointment"
-                key={appointment._id}
-                listid={appointment._id}
-              >
-                <span onClick={this.handleDelete}>X </span>
-                {appointment.begins.substring(11, 16)} {appointment.title}
-              </div>
-            ))}
+            {this.props.appointments
+              .filter(
+                (appointment) =>
+                  new Date(appointment.startDate).toDateString() ===
+                  this.props.currentDay.toDateString()
+              )
+              .map((appointment) => (
+                <div
+                  className="appointment"
+                  key={appointment._id}
+                  listid={appointment._id}
+                >
+                  <span onClick={this.handleDelete}>X </span>
+                  {appointment.begins.substring(11, 16)} {appointment.title}
+                </div>
+              ))}
           </div>
         </div>
         <Modal fetchAppointments={this.props.fetchAppointments} />
