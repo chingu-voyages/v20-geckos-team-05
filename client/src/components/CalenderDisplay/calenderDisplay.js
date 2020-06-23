@@ -14,6 +14,7 @@ class CalenderDisplay extends React.Component {
   };
 
   createCalendar() {
+    let today = new Date();
     let days = [];
     let startDayOfWeek = new Date(
       this.state.currentYear,
@@ -37,10 +38,20 @@ class CalenderDisplay extends React.Component {
           ></div>
         );
       } else {
+        let todaySelected = false;
+        if (
+          i === today.getDate() &&
+          this.state.currentMonth === today.getMonth() &&
+          this.state.currentYear === today.getFullYear()
+        ) {
+          todaySelected = true;
+        }
         daysToDisplay.push(
           <div
             key={i}
-            className={`${this.state.currentMonth} ${this.state.currentYear} day`}
+            className={`${this.state.currentMonth} ${
+              this.state.currentYear
+            } day ${todaySelected ? "today" : ""}`}
           >
             {days.shift()}
           </div>

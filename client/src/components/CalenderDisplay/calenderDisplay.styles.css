@@ -61,6 +61,10 @@
   transform: translate(310px, -232px);
 }
 
+.today {
+  color: blue;
+}
+
 .selected {
   color: red;
 }
