@@ -35,14 +35,15 @@ function Footer () {
                 </div>
                     <div className="socialSection">
                     <a href="https://github.com/marcoruggeri"  target="_blank" className="logo githubLogo"><img src={githubLogo}></img></a>
-                    <div className="logo twitterLogo"><img src={twitterLogo}></img></div>
-                    <div className="logo linkedInLogo"><img src={linkedInLogo}></img></div>
                     </div>
                 </div>
             </div>
 
             <div className="attributeSection">
-            <div className="roundIcons">Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div className="roundIcons">Icons made by 
+                <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from 
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+            </div>
             <div>Twitter icon icon by Icons8</div>
 
             </div>
