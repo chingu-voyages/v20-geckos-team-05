@@ -47,37 +47,39 @@ class Modal extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-      if (!this.state.title || 
-        !this.state.startDate || 
-        !this.state.endDate || 
-        !this.state.begins || 
-        !this.state.ends ) {
-        this.setState({ isError: true });
-      } else {
-        const appointment = {
-          title: event.target.title.value,
-          startDate: `${event.target.startDate.value}T${event.target.begins.value}`,
-          endDate: `${event.target.endDate.value}T${event.target.ends.value}`,
-          begins: `${event.target.startDate.value}T${event.target.begins.value}`,
-          ends: `${event.target.endDate.value}T${event.target.ends.value}`,
-          people: event.target.people.value,
-          location: event.target.location.value,
-          description: event.target.description.value,
+    if (
+      !this.state.title ||
+      !this.state.startDate ||
+      !this.state.endDate ||
+      !this.state.begins ||
+      !this.state.ends
+    ) {
+      this.setState({ isError: true });
+    } else {
+      const appointment = {
+        title: event.target.title.value,
+        startDate: `${event.target.startDate.value}T${event.target.begins.value}`,
+        endDate: `${event.target.endDate.value}T${event.target.ends.value}`,
+        begins: `${event.target.startDate.value}T${event.target.begins.value}`,
+        ends: `${event.target.endDate.value}T${event.target.ends.value}`,
+        people: event.target.people.value,
+        location: event.target.location.value,
+        description: event.target.description.value,
+      };
+      console.log(appointment);
+      await fetch(
+        process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(appointment),
         }
-        await fetch(
-          process.env.REACT_APP_API_URL || "http://localhost:5000/api",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(appointment),
-          }
-        );
-        this.setState({ showModal: false });
-        this.props.fetchAppointments();
-        this.hideModal();
+      );
+      this.setState({ showModal: false });
+      this.props.fetchAppointments();
+      this.hideModal();
     }
-  }
-
+  };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -88,9 +90,9 @@ class Modal extends React.Component {
       <div>
         <button onClick={this.showModal}>Add</button>
         <div
-          className={this.state.showModal ? 
-                    "modal display-block" : 
-                    "modal display-none"}
+          className={
+            this.state.showModal ? "modal display-block" : "modal display-none"
+          }
         >
           {this.state.showModal && (
             <section className="modalMain">
@@ -98,15 +100,16 @@ class Modal extends React.Component {
                 <strong>X</strong>
               </div>
               {this.state.isError && (
-              <div className="errorMessage">{this.state.errorMessage}</div>
-               )
-              }
+                <div className="errorMessage">{this.state.errorMessage}</div>
+              )}
               <form onSubmit={(e) => this.handleSubmit(e)}>
                 <div className="entryContainer">
                   <div className="appointmentTitle">
                     <label>Title *</label>
                     <input
-                      className={this.state.isError && !this.state.title ? "error" : ""}  
+                      className={
+                        this.state.isError && !this.state.title ? "error" : ""
+                      }
                       type="text"
                       name="title"
                       onChange={this.handleChange}
@@ -117,7 +120,11 @@ class Modal extends React.Component {
                     <div className="startDate">
                       <label>Start Date *</label>
                       <input
-                        className={this.state.isError && !this.state.startDate ? "error" : ""}  
+                        className={
+                          this.state.isError && !this.state.startDate
+                            ? "error"
+                            : ""
+                        }
                         type="date"
                         name="startDate"
                         onChange={this.handleChange}
@@ -127,7 +134,11 @@ class Modal extends React.Component {
                     <div className="endDate ">
                       <label>End Date *</label>
                       <input
-                        className={this.state.isError && !this.state.endDate ? "error" : ""}  
+                        className={
+                          this.state.isError && !this.state.endDate
+                            ? "error"
+                            : ""
+                        }
                         type="date"
                         name="endDate"
                         onChange={this.handleChange}
@@ -139,7 +150,11 @@ class Modal extends React.Component {
                     <div className="startTime">
                       <label>Begins *</label>
                       <input
-                        className={this.state.isError && !this.state.begins ? "error" : ""} 
+                        className={
+                          this.state.isError && !this.state.begins
+                            ? "error"
+                            : ""
+                        }
                         type="time"
                         name="begins"
                         onChange={this.handleChange}
@@ -149,7 +164,9 @@ class Modal extends React.Component {
                     <div className="endTime">
                       <label>Ends *</label>
                       <input
-                        className={this.state.isError && !this.state.ends ? "error" : ""} 
+                        className={
+                          this.state.isError && !this.state.ends ? "error" : ""
+                        }
                         type="time"
                         name="ends"
                         onChange={this.handleChange}
