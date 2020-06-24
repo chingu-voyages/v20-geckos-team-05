@@ -40,9 +40,7 @@ class AppointmentDisplay extends React.Component {
                   listid={appointment._id}
                 >
                   <span onClick={this.handleDelete}>X </span>
-                  {new Date(appointment.begins)
-                    .toLocaleString()
-                    .substring(12, 17)}{" "}
+                  {appointment.begins.substring(11, 16)} {appointment.title}
                   {appointment.title}
                 </div>
               ))}
