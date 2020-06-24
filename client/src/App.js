@@ -5,14 +5,27 @@ import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
 import AppointmentDisplay from "./components/AppointmentDisplay/AppointmentDisplay";
 import Footer from "./components/Footer/footer";
 
+import spring from './assets/spring.jpg';
+import summer from './assets/summer.jpg';
+import autumn from './assets/autumn.jpg';
+import winter from './assets/winter.jpg';
+
 class App extends React.Component {
   state = {
     appointments: [],
     currentDay: new Date(),
+    image: '',
+    // currentMonth: new Date().getMonth(),
+    // currentYear: new Date().getFullYear(),
+    // prevMonth: this.props.months[new Date().getMonth() - 1],
+    // nextMonth: this.props.months[new Date().getMonth() + 1],
+    // currentMonthDisplay: this.props.months[new Date().getMonth()],
   };
 
   componentDidMount() {
     this.fetchAppointments();
+    this.handleBackgroundImage();
+
   }
 
   fetchAppointments = () => {
@@ -40,9 +53,23 @@ class App extends React.Component {
     }
   };
 
+  handleBackgroundImage = () => {
+    let test = this.state.currentDay.getMonth();
+    if( test === 11 || test === 0  || test === 1 ) {
+      this.setState({ image: winter});
+    } else if (test === 2 || test === 3  || test === 4 ) {
+      this.setState({ image: spring });
+    } else if (test === 5 || test === 6  || test === 7)  {
+      this.setState({ image: summer });
+    } else if (test === 8 || test === 9  || test === 10)  {
+      this.setState({ image: autumn });
+    } 
+  }
+
   render() {
+
     return (
-      <div className="app">
+      <div className="app" style={ {backgroundImage:`url(${this.state.image})`} }>
         <div className="header">
           <div className="title">eCalender</div>
         </div>
