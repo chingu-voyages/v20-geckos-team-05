@@ -23,6 +23,7 @@
     background: slategray;
     opacity: 0.7;
     border-radius: 5px;
+    overflow: scroll;
 }
 
 .appointmentsList {
