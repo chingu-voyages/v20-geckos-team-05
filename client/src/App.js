@@ -35,7 +35,7 @@ class App extends React.Component {
       .catch((error) => console.log(error));
   };
 
-  handleDaySelection = (event) => {
+  handleDaySelection = async (event) => {
     if (event.target.classList.contains("day") && event.target.innerText) {
       event.target.parentElement.childNodes.forEach((child) =>
         child.classList.remove("selected")
@@ -44,7 +44,7 @@ class App extends React.Component {
       let day = event.target.innerText;
       let month = event.target.className.split(" ")[0];
       let year = event.target.className.split(" ")[1];
-      this.setState({ currentDay: new Date(year, month, day) });
+      await this.setState({ currentDay: new Date(year, month, day) });
       this.handleBackgroundImage();
     }
   };
@@ -64,8 +64,14 @@ class App extends React.Component {
 
   render() {
 
+    const imgStyle = {
+      backgroundImage:`url(${this.state.image})`,
+      transition: "background-image 1s ease-in-out",
+
+    }
+
     return (
-      <div className="app" style={ {backgroundImage:`url(${this.state.image})`} }>
+      <div className="app" style={imgStyle}>
         <div className="header">
           <div className="title">eCalender</div>
         </div>
