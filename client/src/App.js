@@ -15,17 +15,12 @@ class App extends React.Component {
     appointments: [],
     currentDay: new Date(),
     image: '',
-    // currentMonth: new Date().getMonth(),
-    // currentYear: new Date().getFullYear(),
-    // prevMonth: this.props.months[new Date().getMonth() - 1],
-    // nextMonth: this.props.months[new Date().getMonth() + 1],
-    // currentMonthDisplay: this.props.months[new Date().getMonth()],
   };
 
   componentDidMount() {
     this.fetchAppointments();
     this.handleBackgroundImage();
-
+    console.log(this.state.currentDay);
   }
 
   fetchAppointments = () => {
@@ -50,6 +45,7 @@ class App extends React.Component {
       let month = event.target.className.split(" ")[0];
       let year = event.target.className.split(" ")[1];
       this.setState({ currentDay: new Date(year, month, day) });
+      this.handleBackgroundImage();
     }
   };
 
