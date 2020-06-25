@@ -35,7 +35,7 @@ class App extends React.Component {
       .catch((error) => console.log(error));
   };
 
-  handleDaySelection = async (event) => {
+  handleDaySelection = (event) => {
     if (event.target.classList.contains("day") && event.target.innerText) {
       event.target.parentElement.childNodes.forEach((child) =>
         child.classList.remove("selected")
@@ -44,8 +44,9 @@ class App extends React.Component {
       let day = event.target.innerText;
       let month = event.target.className.split(" ")[0];
       let year = event.target.className.split(" ")[1];
-      await this.setState({ currentDay: new Date(year, month, day) });
-      this.handleBackgroundImage();
+      this.setState({ currentDay: new Date(year, month, day) }, () => {
+        this.handleBackgroundImage();
+      });
     }
   };
 
