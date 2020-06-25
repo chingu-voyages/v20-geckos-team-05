@@ -18,14 +18,14 @@ function Footer () {
                         Jon Hill
                     </div>
                     <div className="socialSection">
-                        <a href="https://github.com/jondhill333" target="_blank" className="logo githubLogo">
-                            <img src={githubLogo} />
+                        <a className="logo githubLogo" href="https://github.com/jondhill333" target="_blank"  rel="noopener noreferrer">
+                            <img src={githubLogo} alt="Jon-Hill-github-page-link-logo"/>
                         </a>
-                        <a href="https://twitter.com/jon_hill33"  target="_blank" className="logo twitterLogo">
-                            <img src={twitterLogo} />
+                        <a href="https://twitter.com/jon_hill33"  target="_blank"  rel="noopener noreferrer"className="logo twitterLogo">
+                            <img src={twitterLogo} alt="Jon-Hill-twitter-page-link-logo" />
                         </a>
-                        <a href="https://www.linkedin.com/in/jonathan-hill-1b293339/"  target="_blank"  className="logo linkedInLogo">
-                            <img src={linkedInLogo} />
+                        <a href="https://www.linkedin.com/in/jonathan-hill-1b293339/"  target="_blank"  rel="noopener noreferrer" className="logo linkedInLogo">
+                            <img src={linkedInLogo}  alt="Jon-Hill-linkedIn-page-link-logo"/>
                         </a>
                     </div>
                 </div>
@@ -34,15 +34,17 @@ function Footer () {
                     Marco Ruggeri
                 </div>
                     <div className="socialSection">
-                    <a href="https://github.com/marcoruggeri"  target="_blank" className="logo githubLogo"><img src={githubLogo}></img></a>
+                    <a href="https://github.com/marcoruggeri"  target="_blank"  rel="noopener noreferrer" className="logo githubLogo">
+                        <img src={githubLogo} alt="Marco-Ruggeri-github-page-link-logo"/>
+                    </a>
                     </div>
                 </div>
             </div>
 
             <div className="attributeSection">
             <div className="roundIcons">Icons made by 
-                <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from 
-                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons"> Roundicons</a> from 
+                <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
             </div>
             <div>Twitter icon icon by Icons8</div>
 

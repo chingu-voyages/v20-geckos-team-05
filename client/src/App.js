@@ -5,14 +5,22 @@ import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
 import AppointmentDisplay from "./components/AppointmentDisplay/AppointmentDisplay";
 import Footer from "./components/Footer/footer";
 
+import spring from './assets/spring.jpg';
+import summer from './assets/summer.jpg';
+import autumn from './assets/autumn.jpg';
+import winter from './assets/winter.jpg';
+
 class App extends React.Component {
   state = {
     appointments: [],
     currentDay: new Date(),
+    image: '',
   };
 
   componentDidMount() {
     this.fetchAppointments();
+    this.handleBackgroundImage();
+    console.log(this.state.currentDay);
   }
 
   fetchAppointments = () => {
@@ -27,7 +35,7 @@ class App extends React.Component {
       .catch((error) => console.log(error));
   };
 
-  handleDaySelection = (event) => {
+  handleDaySelection = async (event) => {
     if (event.target.classList.contains("day") && event.target.innerText) {
       event.target.parentElement.childNodes.forEach((child) =>
         child.classList.remove("selected")
@@ -36,13 +44,34 @@ class App extends React.Component {
       let day = event.target.innerText;
       let month = event.target.className.split(" ")[0];
       let year = event.target.className.split(" ")[1];
-      this.setState({ currentDay: new Date(year, month, day) });
+      await this.setState({ currentDay: new Date(year, month, day) });
+      this.handleBackgroundImage();
     }
   };
 
+  handleBackgroundImage = () => {
+    let test = this.state.currentDay.getMonth();
+    if( test === 11 || test === 0  || test === 1 ) {
+      this.setState({ image: winter});
+    } else if (test === 2 || test === 3  || test === 4 ) {
+      this.setState({ image: spring });
+    } else if (test === 5 || test === 6  || test === 7)  {
+      this.setState({ image: summer });
+    } else if (test === 8 || test === 9  || test === 10)  {
+      this.setState({ image: autumn });
+    } 
+  }
+
   render() {
+
+    const imgStyle = {
+      backgroundImage:`url(${this.state.image})`,
+      transition: "background-image 1s ease-in-out",
+
+    }
+
     return (
-      <div className="app">
+      <div className="app" style={imgStyle}>
         <div className="header">
           <div className="title">eCalender</div>
         </div>
