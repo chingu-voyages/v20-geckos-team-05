@@ -3,9 +3,6 @@
   height: 100%;
 }
 
-.calenderDisplay {
-}
-
 .currentYear {
   margin-bottom: 5px;
   margin-top: 5px;
@@ -19,12 +16,6 @@
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 10px;
   font-size: 20px;
-}
-
-.prevMonth {
-}
-
-.nextMonth {
 }
 
 .daysOfWeekDisplay {
@@ -84,13 +75,22 @@
     width: inherit;
   }
 
+  .daysOfWeekDisplay {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 35px);
+  }
+
   .nextButton {
-    transform: translate(300px, -223px);
+    transform: translate(306px, -172px);
     width: 20px;
     height: 20px;
   }
 
   .prevButton {
+    transform: translate(5px, -150px);
     width: 20px;
     height: 20px;
   }

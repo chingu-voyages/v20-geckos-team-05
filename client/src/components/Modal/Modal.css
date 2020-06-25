@@ -12,9 +12,10 @@
   background: white;
   width: 680px;
   height: 330px;
-  top: 51.5%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 5px;
 }
 
 form {
@@ -238,7 +239,8 @@ button {
   .modalMain {
     width: 90vw;
     height: 80vh;
-    bottom: 25%;
+    top: 40%;
+    left: 42%;
   }
 
   .appointmentTitle label {
@@ -331,5 +333,8 @@ button {
 
   .submitButton {
     margin-top: 30px;
+  }
+  button{
+    margin-bottom: 10px;
   }
 }
