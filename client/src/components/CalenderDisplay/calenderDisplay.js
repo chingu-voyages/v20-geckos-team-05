@@ -20,7 +20,7 @@ class CalenderDisplay extends React.Component {
   createCalendar() {
     let today = new Date();
     let prevDays = [];
-    let nextDays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    let nextDays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     let days = [];
     let startDayOfWeek = new Date(
       this.state.currentYear,
@@ -43,6 +43,38 @@ class CalenderDisplay extends React.Component {
     const daysToDisplay = [];
 
     for (let i = 0; i < 42; i++) {
+      let day = prevDays[0]
+        ? prevDays[prevDays.length - 1]
+        : days[0]
+        ? days[0]
+        : nextDays[0];
+      let month = prevDays[0]
+        ? this.state.prevMonth === -1
+          ? "12"
+          : this.state.prevMonth + 1
+        : days[0]
+        ? this.state.currentMonth + 1
+        : this.state.nextMonth !== 12
+        ? this.state.nextMonth + 1
+        : "01";
+      let year =
+        this.state.currentMonth === 11 && month === "01"
+          ? this.state.nextYear
+          : this.state.currentMonth === 0 && month === "12"
+          ? this.state.prevYear
+          : this.state.currentYear;
+      let loopingDay = `${year}-${
+        this.state.currentMonth < 10 && month < 10 ? "0" : ""
+      }${month}-${day < 10 ? "0" : ""}${day}`;
+      let cond = false;
+      for (let i = 0; i < this.props.appointments.length; i++) {
+        if (
+          loopingDay === this.props.appointments[i].startDate.substring(0, 10)
+        ) {
+          cond = true;
+          break;
+        }
+      }
       if (days[i] <= startDayOfWeek) {
         daysToDisplay.push(
           <div
@@ -51,7 +83,7 @@ class CalenderDisplay extends React.Component {
               this.state.prevMonth === 11
                 ? this.state.prevYear
                 : this.state.currentYear
-            } day apart`}
+            } day apart ${cond ? "indicator" : ""}`}
           >
             {prevDays.pop()}
           </div>
@@ -76,13 +108,15 @@ class CalenderDisplay extends React.Component {
                 : this.state.nextYear
             } day ${days.length > 0 ? "" : "apart"} ${
               todaySelected ? "today" : ""
-            }`}
+            }
+            ${cond ? "indicator" : ""}`}
           >
             {days.length > 0 ? days.shift() : nextDays.shift()}
           </div>
         );
       }
     }
+
     return daysToDisplay;
   }
 
@@ -100,6 +134,7 @@ class CalenderDisplay extends React.Component {
       this.setState((prevState) => ({
         currentYear: prevState.currentYear - 1,
         prevYear: prevState.prevYear - 1,
+        nextYear: prevState.nextYear - 1,
         currentMonth: 11,
         prevMonth: 10,
         nextMonth: 12,
@@ -133,6 +168,7 @@ class CalenderDisplay extends React.Component {
       this.setState((prevState) => ({
         currentYear: prevState.currentYear + 1,
         prevYear: prevState.prevYear + 1,
+        nextYear: prevState.nextYear + 1,
         currentMonth: 0,
         prevMonth: -1,
         nextMonth: 1,
