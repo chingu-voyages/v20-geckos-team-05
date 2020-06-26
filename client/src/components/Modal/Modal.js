@@ -49,8 +49,8 @@ class Modal extends React.Component {
     event.preventDefault();
     if (
       !this.state.title ||
-      !this.state.startDate ||
-      !this.state.endDate ||
+      // !this.state.startDate ||
+      // !this.state.endDate ||
       !this.state.begins ||
       !this.state.ends
     ) {
