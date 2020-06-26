@@ -5,17 +5,17 @@ import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
 import AppointmentDisplay from "./components/AppointmentDisplay/AppointmentDisplay";
 import Footer from "./components/Footer/footer";
 
-import spring from './assets/spring.jpg';
-import summer from './assets/summer.jpg';
-import autumn from './assets/autumn.jpg';
-import winter from './assets/winter.jpg';
+import spring from "./assets/spring.jpg";
+import summer from "./assets/summer.jpg";
+import autumn from "./assets/autumn.jpg";
+import winter from "./assets/winter.jpg";
 
 class App extends React.Component {
   state = {
     appointments: [],
     currentDay: new Date(),
-    image: '',
-    footerColor: '',
+    image: "",
+    footerColor: "",
   };
 
   componentDidMount() {
@@ -54,31 +54,30 @@ class App extends React.Component {
 
   handleBackgroundImage = () => {
     let test = this.state.currentDay.getMonth();
-    if( test === 11 || test === 0  || test === 1 ) {
-      this.setState({ image: winter});
-    } else if (test === 2 || test === 3  || test === 4 ) {
+    if (test === 11 || test === 0 || test === 1) {
+      this.setState({ image: winter });
+    } else if (test === 2 || test === 3 || test === 4) {
       this.setState({ image: spring });
-    } else if (test === 5 || test === 6  || test === 7)  {
+    } else if (test === 5 || test === 6 || test === 7) {
       this.setState({ image: summer });
-    } else if (test === 8 || test === 9  || test === 10)  {
+    } else if (test === 8 || test === 9 || test === 10) {
       this.setState({ image: autumn });
-    } 
-  }
+    }
+  };
 
   handlefooterColor = () => {
-    if(this.state.image === '/static/media/autumn.7e0802f2.jpg') {
-      this.setState({footerColor: "#39939A"}) 
-    }  else {
-      this.setState({footerColor: "lightblue"}) 
+    if (this.state.image === "/static/media/autumn.7e0802f2.jpg") {
+      this.setState({ footerColor: "#39939A" });
+    } else {
+      this.setState({ footerColor: "lightblue" });
     }
-  }
+  };
 
   render() {
-
     const imgStyle = {
-      backgroundImage:`url(${this.state.image})`,
+      backgroundImage: `url(${this.state.image})`,
       transition: "background-image 1s ease-in-out",
-    }
+    };
 
     return (
       <div className="app" style={imgStyle}>
@@ -89,6 +88,7 @@ class App extends React.Component {
           <CalenderDisplay
             months={this.props.months}
             onSelection={this.handleDaySelection}
+            appointments={this.state.appointments}
           />
           <AppointmentDisplay
             appointments={this.state.appointments}
@@ -99,7 +99,7 @@ class App extends React.Component {
             days={this.props.days}
           />
         </div>
-        <Footer footerColor={this.state.footerColor}/>
+        <Footer footerColor={this.state.footerColor} />
       </div>
     );
   }
