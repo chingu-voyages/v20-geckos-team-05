@@ -15,12 +15,13 @@ class App extends React.Component {
     appointments: [],
     currentDay: new Date(),
     image: '',
+    footerColor: '',
   };
 
   componentDidMount() {
     this.fetchAppointments();
     this.handleBackgroundImage();
-    console.log(this.state.currentDay);
+    this.handlefooterColor();
   }
 
   fetchAppointments = () => {
@@ -46,6 +47,7 @@ class App extends React.Component {
       let year = event.target.className.split(" ")[1];
       this.setState({ currentDay: new Date(year, month, day) }, () => {
         this.handleBackgroundImage();
+        this.handlefooterColor();
       });
     }
   };
@@ -63,12 +65,19 @@ class App extends React.Component {
     } 
   }
 
+  handlefooterColor = () => {
+    if(this.state.image === '/static/media/autumn.7e0802f2.jpg') {
+      this.setState({footerColor: "#39939A"}) 
+    }  else {
+      this.setState({footerColor: "lightblue"}) 
+    }
+  }
+
   render() {
 
     const imgStyle = {
       backgroundImage:`url(${this.state.image})`,
       transition: "background-image 1s ease-in-out",
-
     }
 
     return (
@@ -90,7 +99,7 @@ class App extends React.Component {
             days={this.props.days}
           />
         </div>
-        <Footer />
+        <Footer footerColor={this.state.footerColor}/>
       </div>
     );
   }
