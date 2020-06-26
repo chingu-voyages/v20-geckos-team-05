@@ -44,6 +44,13 @@ class AppointmentDisplay extends React.Component {
                   {appointment.title}
                 </div>
               ))}
+            {document.querySelector(".appointmentsList") ? (
+              document
+                .querySelector(".appointmentsList")
+                .hasChildNodes() ? null : (
+                <div className="appointment">No Appointments</div>
+              )
+            ) : null}
           </div>
         </div>
         <Modal
