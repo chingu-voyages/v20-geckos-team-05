@@ -46,7 +46,10 @@ class AppointmentDisplay extends React.Component {
               ))}
           </div>
         </div>
-        <Modal fetchAppointments={this.props.fetchAppointments} />
+        <Modal
+          fetchAppointments={this.props.fetchAppointments}
+          currentDay={this.props.currentDay}
+        />
       </div>
     );
   }

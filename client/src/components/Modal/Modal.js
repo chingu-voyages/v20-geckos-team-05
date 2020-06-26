@@ -119,29 +119,47 @@ class Modal extends React.Component {
                     <div className="startDate">
                       <label>Start Date *</label>
                       <input
-                        className={
-                          this.state.isError && !this.state.startDate
-                            ? "error"
-                            : ""
-                        }
+                        // className={
+                        //   this.state.isError && !this.state.startDate
+                        //     ? "error"
+                        //     : ""
+                        // }
                         type="date"
                         name="startDate"
                         onChange={this.handleChange}
-                        value={this.state.startDate}
+                        value={
+                          this.state.startDate
+                            ? this.state.startDate
+                            : `${this.props.currentDay.getFullYear()}-${
+                                this.props.currentDay.getMonth() < 9 ? "0" : ""
+                              }${this.props.currentDay.getMonth() + 1}-${
+                                this.props.currentDay.getDate() < 10 ? "0" : ""
+                              }${this.props.currentDay.getDate()}`
+                        }
                       ></input>
                     </div>
                     <div className="endDate ">
                       <label>End Date *</label>
                       <input
-                        className={
-                          this.state.isError && !this.state.endDate
-                            ? "error"
-                            : ""
-                        }
+                        // className={
+                        //   this.state.isError && !this.state.endDate
+                        //     ? "error"
+                        //     : ""
+                        // }
                         type="date"
                         name="endDate"
                         onChange={this.handleChange}
-                        value={this.state.endDate}
+                        value={
+                          this.state.endDate
+                            ? this.state.endDate
+                            : this.state.startDate
+                            ? this.state.startDate
+                            : `${this.props.currentDay.getFullYear()}-${
+                                this.props.currentDay.getMonth() < 9 ? "0" : ""
+                              }${this.props.currentDay.getMonth() + 1}-${
+                                this.props.currentDay.getDate() < 10 ? "0" : ""
+                              }${this.props.currentDay.getDate()}`
+                        }
                       ></input>
                     </div>
                   </div>
