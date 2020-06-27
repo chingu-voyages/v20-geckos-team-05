@@ -55,7 +55,6 @@ class AppointmentDisplay extends React.Component {
                 >
                   <span onClick={this.handleDelete}>X </span>
                   {appointment.begins.substring(11, 16)} {appointment.title}
-                  {appointment.title}
                 </div>
               ))}
             {document.querySelector(".appointmentsList") ? (
