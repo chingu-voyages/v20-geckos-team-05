@@ -15,6 +15,19 @@ class AppointmentDisplay extends React.Component {
     }
   };
 
+  sortByDate = (a, b) => {
+    const dateA = a.startDate;
+    const dateB = b.startDate;
+
+    let comparison = 0;
+    if (dateA > dateB) {
+      comparison = 1;
+    } else if (dateA < dateB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
   render() {
     return (
       <div className="appointmentsDisplayContainer">
@@ -33,6 +46,7 @@ class AppointmentDisplay extends React.Component {
                   new Date(appointment.startDate).toDateString() ===
                   this.props.currentDay.toDateString()
               )
+              .sort(this.sortByDate)
               .map((appointment) => (
                 <div
                   className="appointment"
