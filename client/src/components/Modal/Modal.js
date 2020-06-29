@@ -47,11 +47,7 @@ class Modal extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      !this.state.title
-      // !this.state.begins ||
-      // !this.state.ends
-    ) {
+    if (!this.state.title ) {
       this.setState({ isError: true });
     } else {
       const appointment = {
