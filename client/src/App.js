@@ -46,8 +46,8 @@ class App extends React.Component {
       let day = event.target.innerText;
       let month = event.target.className.split(" ")[0];
       let year = event.target.className.split(" ")[1];
-      this.setState({ currentDay: new Date(year, month, day) }, () => {
-        this.handleBackgroundImage();
+      this.setState({ currentDay: new Date(year, month, day) }, async () => {
+        await this.handleBackgroundImage();
         this.handlefooterColor();
       });
     }
