@@ -18,7 +18,8 @@ class Register extends React.Component {
     };
     try {
       let response = await fetch(
-        process.env.REACT_APP_API_URL || "http://localhost:5000/api/register",
+        process.env.REACT_APP_API_REGISTER_URL ||
+          "http://localhost:5000/api/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -80,11 +80,14 @@ class App extends React.Component {
       username,
       password,
     };
-    fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    })
+    fetch(
+      process.env.REACT_APP_API_LOGIN_URL || "http://localhost:5000/api/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.userId) {
