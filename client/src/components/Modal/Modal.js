@@ -48,11 +48,9 @@ class Modal extends React.Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     if (
-      !this.state.title ||
-      // !this.state.startDate ||
-      // !this.state.endDate ||
-      !this.state.begins ||
-      !this.state.ends
+      !this.state.title
+      // !this.state.begins ||
+      // !this.state.ends
     ) {
       this.setState({ isError: true });
     } else {
@@ -85,6 +83,7 @@ class Modal extends React.Component {
   };
 
   render() {
+
     return (
       <div>
         <button onClick={this.showModal}>Add</button>
@@ -119,11 +118,6 @@ class Modal extends React.Component {
                     <div className="startDate">
                       <label>Start Date *</label>
                       <input
-                        // className={
-                        //   this.state.isError && !this.state.startDate
-                        //     ? "error"
-                        //     : ""
-                        // }
                         type="date"
                         name="startDate"
                         onChange={this.handleChange}
@@ -141,11 +135,6 @@ class Modal extends React.Component {
                     <div className="endDate ">
                       <label>End Date *</label>
                       <input
-                        // className={
-                        //   this.state.isError && !this.state.endDate
-                        //     ? "error"
-                        //     : ""
-                        // }
                         type="date"
                         name="endDate"
                         onChange={this.handleChange}
@@ -167,27 +156,27 @@ class Modal extends React.Component {
                     <div className="startTime">
                       <label>Begins *</label>
                       <input
-                        className={
-                          this.state.isError && !this.state.begins
-                            ? "error"
-                            : ""
-                        }
                         type="time"
                         name="begins"
                         onChange={this.handleChange}
-                        value={this.state.begins}
+                        value={this.state.begins
+                          ? this.state.begins 
+                          : `${this.props.currentDay.getHours()}:${
+                              this.props.currentDay.getMinutes()}`
+                        }
                       ></input>
                     </div>
                     <div className="endTime">
                       <label>Ends *</label>
                       <input
-                        className={
-                          this.state.isError && !this.state.ends ? "error" : ""
-                        }
                         type="time"
                         name="ends"
                         onChange={this.handleChange}
-                        value={this.state.ends}
+                        value={this.state.ends
+                          ? this.state.ends
+                          : `${this.props.currentDay.getHours()}:${
+                              this.props.currentDay.getMinutes() + 30}`
+                        }
                       ></input>
                     </div>
                   </div>
