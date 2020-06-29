@@ -24,6 +24,7 @@ router.post("/", async (req, res) => {
       people: req.body.people,
       location: req.body.location,
       description: req.body.description,
+      userId: req.body.userId,
     });
     res.json({ appointment });
   } catch (error) {

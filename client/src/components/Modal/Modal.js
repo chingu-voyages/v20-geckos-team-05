@@ -65,18 +65,24 @@ class Modal extends React.Component {
         people: event.target.people.value,
         location: event.target.location.value,
         description: event.target.description.value,
+        userId: this.props.userId,
       };
-      await fetch(
-        process.env.REACT_APP_API_URL || "http://localhost:5000/api",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(appointment),
-        }
-      );
-      this.setState({ showModal: false });
-      this.props.fetchAppointments();
-      this.hideModal();
+      try {
+        await fetch(
+          process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(appointment),
+          }
+        );
+        console.log(appointment);
+        this.setState({ showModal: false });
+        this.props.fetchAppointments();
+        this.hideModal();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -87,7 +93,7 @@ class Modal extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.showModal}>Add</button>
+        {this.props.userId && <button onClick={this.showModal}>Add</button>}
         <div
           className={
             this.state.showModal ? "modal display-block" : "modal display-none"

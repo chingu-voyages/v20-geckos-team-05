@@ -16,6 +16,7 @@ class App extends React.Component {
     currentDay: new Date(),
     image: "",
     footerColor: "",
+    userId: "",
   };
 
   componentDidMount() {
@@ -73,6 +74,26 @@ class App extends React.Component {
     }
   };
 
+  handleLogin = (event, username, password) => {
+    event.preventDefault();
+    const userData = {
+      username,
+      password,
+    };
+    fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.userId) {
+          this.setState({ userId: data.userId });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
     const imgStyle = {
       backgroundImage: `url(${this.state.image})`,
@@ -89,6 +110,7 @@ class App extends React.Component {
             months={this.props.months}
             onSelection={this.handleDaySelection}
             appointments={this.state.appointments}
+            userId={this.state.userId}
           />
           <AppointmentDisplay
             appointments={this.state.appointments}
@@ -97,6 +119,8 @@ class App extends React.Component {
             months={this.props.months}
             monthsLong={this.props.monthsLong}
             days={this.props.days}
+            userId={this.state.userId}
+            onLogin={this.handleLogin}
           />
         </div>
         <Footer footerColor={this.state.footerColor} />

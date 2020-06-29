@@ -40,6 +40,10 @@ class CalenderDisplay extends React.Component {
       numOfDaysPrevMonth--;
     }
 
+    const filteredAppointments = this.props.appointments.filter(
+      (appointment) => appointment.userId === this.props.userId
+    );
+
     const daysToDisplay = [];
 
     for (let i = 0; i < 42; i++) {
@@ -67,10 +71,8 @@ class CalenderDisplay extends React.Component {
         this.state.currentMonth < 10 && month < 10 ? "0" : ""
       }${month}-${day < 10 ? "0" : ""}${day}`;
       let cond = false;
-      for (let i = 0; i < this.props.appointments.length; i++) {
-        if (
-          loopingDay === this.props.appointments[i].startDate.substring(0, 10)
-        ) {
+      for (let i = 0; i < filteredAppointments.length; i++) {
+        if (loopingDay === filteredAppointments[i].startDate.substring(0, 10)) {
           cond = true;
           break;
         }
