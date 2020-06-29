@@ -2,6 +2,9 @@ import React from "react";
 import Modal from "../Modal/Modal";
 import "./AppointmentDisplay.css";
 
+import Login from "../Authentication/Login";
+import Register from "../Authentication/Register";
+
 class AppointmentDisplay extends React.Component {
   handleDelete = async (event) => {
     const id = event.target.parentNode.getAttribute("listid");
@@ -31,6 +34,8 @@ class AppointmentDisplay extends React.Component {
   render() {
     return (
       <div className="appointmentsDisplayContainer">
+        <Login onLogin={this.props.onLogin} userId={this.props.userId} />
+        <Register userId={this.props.userId} />
         <div className="selectedDay">
           <div>{this.props.days[this.props.currentDay.getDay()]}</div>
           <div>
@@ -46,6 +51,7 @@ class AppointmentDisplay extends React.Component {
                   new Date(appointment.startDate).toDateString() ===
                   this.props.currentDay.toDateString()
               )
+              .filter((appointment) => appointment.userId === this.props.userId)
               .sort(this.sortByDate)
               .map((appointment) => (
                 <div
@@ -57,18 +63,22 @@ class AppointmentDisplay extends React.Component {
                   {appointment.begins.substring(11, 16)} {appointment.title}
                 </div>
               ))}
-            {document.querySelector(".appointmentsList") ? (
-              document
-                .querySelector(".appointmentsList")
-                .hasChildNodes() ? null : (
-                <div className="appointment">No Appointments</div>
+            {this.props.appointments
+              .filter(
+                (appointment) =>
+                  new Date(appointment.startDate).toDateString() ===
+                  this.props.currentDay.toDateString()
               )
-            ) : null}
+              .filter((appointment) => appointment.userId === this.props.userId)
+              .length > 0 ? null : (
+              <div className="appointment">No Appointments</div>
+            )}
           </div>
         </div>
         <Modal
           fetchAppointments={this.props.fetchAppointments}
           currentDay={this.props.currentDay}
+          userId={this.props.userId}
         />
       </div>
     );
