@@ -8,7 +8,7 @@ import linkedInLogo from "../../assets/iconmonstr-linkedin-3.svg";
 function Footer ({footerColor}) {
 
     return (
-        <div className="footerContainer" style={{background: `${footerColor}`}}>
+        <div className="footerContainer" style={{background: `${footerColor}`, transition: "background 1s ease-in-out",}}>
             <div className="creatorSection">
                 <div className=" section info">
                     Built by:
