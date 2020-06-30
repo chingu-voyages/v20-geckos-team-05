@@ -12,6 +12,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const appointment = await Appointment.findById(req.params.id);
+    res.json({ appointment });
+  } catch (error) {
+    res.json({ error });
+  }
+});
+
 // Add an appointment
 router.post("/", async (req, res) => {
   try {
