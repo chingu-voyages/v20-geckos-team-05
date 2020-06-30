@@ -4,8 +4,20 @@ import "./AppointmentDisplay.css";
 
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
+import EditAppointment from "../EditAppointment/EditAppointment";
 
 class AppointmentDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
+  state = {
+    showEdit: false,
+    editId: "",
+    appointment: {},
+  };
+
   handleDelete = async (event) => {
     const id = event.target.parentNode.getAttribute("listid");
     let url = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
@@ -31,9 +43,41 @@ class AppointmentDisplay extends React.Component {
     return comparison;
   };
 
+  handleEditModal = (event) => {
+    if (event.target.getAttribute("listid")) {
+      this.setState(
+        {
+          showEdit: true,
+          editId: event.target.getAttribute("listid"),
+        },
+        () => {
+          this.fetchAppointment();
+        }
+      );
+    }
+  };
+
+  handleEditModalClose = () => {
+    this.setState({ showEdit: false });
+  };
+
+  fetchAppointment = () => {
+    const id = this.state.editId;
+    let url = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+    fetch(`${url}/${id}`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => this.setState({ appointment: data.appointment }))
+      .then(this.myRef.current.updateState);
+  };
+
   render() {
     return (
-      <div className="appointmentsDisplayContainer">
+      <div
+        className="appointmentsDisplayContainer"
+        onClick={this.handleEditModal}
+      >
         <Login onLogin={this.props.onLogin} userId={this.props.userId} />
         <Register userId={this.props.userId} />
         <div className="selectedDay">
@@ -79,6 +123,17 @@ class AppointmentDisplay extends React.Component {
           fetchAppointments={this.props.fetchAppointments}
           currentDay={this.props.currentDay}
           userId={this.props.userId}
+        />
+        <EditAppointment
+          onEdit={this.handleEditModal}
+          showEdit={this.state.showEdit}
+          fetchAppointments={this.props.fetchAppointments}
+          currentDay={this.props.currentDay}
+          userId={this.props.userId}
+          onClose={this.handleEditModalClose}
+          editId={this.state.editId}
+          appointment={this.state.appointment}
+          ref={this.myRef}
         />
       </div>
     );
