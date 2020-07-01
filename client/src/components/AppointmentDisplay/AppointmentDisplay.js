@@ -73,6 +73,7 @@ class AppointmentDisplay extends React.Component {
   };
 
   render() {
+
     return (
       <div
         className="appointmentsDisplayContainer"

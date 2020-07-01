@@ -1,5 +1,7 @@
 import React from "react";
+import { withCookies } from 'react-cookie';
 import "./App.css";
+
 
 import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
 import AppointmentDisplay from "./components/AppointmentDisplay/AppointmentDisplay";
@@ -23,6 +25,11 @@ class App extends React.Component {
     this.fetchAppointments();
     this.handleBackgroundImage();
     this.handlefooterColor();
+    const { cookies } = this.props;
+    // cookies.remove("[object Object]");
+    let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    cookies.set('session',`${token}`);
+   
   }
 
   fetchAppointments = () => {
@@ -124,6 +131,7 @@ class App extends React.Component {
             days={this.props.days}
             userId={this.state.userId}
             onLogin={this.handleLogin}
+            cookies={this.props.cookies}
           />
         </div>
         <Footer footerColor={this.state.footerColor} />
@@ -172,4 +180,4 @@ App.defaultProps = {
   ],
 };
 
-export default App;
+export default withCookies(App);
