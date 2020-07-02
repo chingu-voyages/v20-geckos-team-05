@@ -9,6 +9,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cookie: {
+    type: String,
+    required: false,
+  }
 });
 
 const User = mongoose.model("User", UserSchema);

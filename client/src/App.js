@@ -24,6 +24,11 @@ class App extends React.Component {
     this.fetchAppointments();
     this.handleBackgroundImage();
     this.handlefooterColor();
+    const { cookies } = this.props;
+    // console.log(cookies);
+    let test = cookies.getAll();
+    console.log(test);
+    // cookies.remove("session");
   }
 
   fetchAppointments = () => {
@@ -76,6 +81,7 @@ class App extends React.Component {
   };
 
   handleLogin = (event, username, password) => {
+    // if()
     const { cookies } = this.props;
     let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     cookies.set('session',`${token}`);
@@ -88,7 +94,7 @@ class App extends React.Component {
       password,
       cookie: token,
     };
-    console.log(userData);
+    // console.log(userData);
     fetch(
       process.env.REACT_APP_API_LOGIN_URL || "http://localhost:5000/api/login",
       {
@@ -99,6 +105,7 @@ class App extends React.Component {
     )
       .then((response) => response.json())
       .then((data) => {
+      console.log(data);
         if (data.userId) {
           this.setState({ userId: data.userId });
         }
