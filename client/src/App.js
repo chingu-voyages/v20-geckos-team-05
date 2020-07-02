@@ -2,7 +2,6 @@ import React from "react";
 import { withCookies } from 'react-cookie';
 import "./App.css";
 
-
 import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
 import AppointmentDisplay from "./components/AppointmentDisplay/AppointmentDisplay";
 import Footer from "./components/Footer/footer";
@@ -25,11 +24,6 @@ class App extends React.Component {
     this.fetchAppointments();
     this.handleBackgroundImage();
     this.handlefooterColor();
-    const { cookies } = this.props;
-    // cookies.remove("[object Object]");
-    let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    cookies.set('session',`${token}`);
-   
   }
 
   fetchAppointments = () => {
@@ -82,11 +76,19 @@ class App extends React.Component {
   };
 
   handleLogin = (event, username, password) => {
+    const { cookies } = this.props;
+    let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    cookies.set('session',`${token}`);
+    console.log(cookies);
+
+
     event.preventDefault();
     const userData = {
       username,
       password,
+      cookie: token,
     };
+    console.log(userData);
     fetch(
       process.env.REACT_APP_API_LOGIN_URL || "http://localhost:5000/api/login",
       {

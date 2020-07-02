@@ -15,6 +15,7 @@ class Register extends React.Component {
     const newUser = {
       username: this.state.username,
       password: this.state.password,
+      cookie: null
     };
     try {
       let response = await fetch(

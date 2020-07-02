@@ -79,7 +79,7 @@ class AppointmentDisplay extends React.Component {
         className="appointmentsDisplayContainer"
         onClick={this.handleEditModal}
       >
-        <Login onLogin={this.props.onLogin} userId={this.props.userId} />
+        <Login onLogin={this.props.onLogin} userId={this.props.userId}  />
         <Register userId={this.props.userId} />
         <div className="selectedDay">
           <div>{this.props.days[this.props.currentDay.getDay()]}</div>

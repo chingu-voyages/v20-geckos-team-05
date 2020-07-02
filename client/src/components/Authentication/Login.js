@@ -6,6 +6,7 @@ class Login extends React.Component {
     username: "",
     password: "",
     showModal: false,
+    // cookie: null
   };
   onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
