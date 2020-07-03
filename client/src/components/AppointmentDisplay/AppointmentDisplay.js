@@ -74,13 +74,18 @@ class AppointmentDisplay extends React.Component {
 
   render() {
 
+    // console.log(this.props.appointments);
+    // console.log(this.props.cookies);
+    // const { cookies } = this.props;
+    // const userCookie = cookies.get("user");
+
     return (
       <div
         className="appointmentsDisplayContainer"
         onClick={this.handleEditModal}
       >
-        <Login onLogin={this.props.onLogin} userId={this.props.userId}  />
-        <Register userId={this.props.userId} />
+        <Login onLogin={this.props.onLogin} userId={this.props.userId} isLoggedIn={this.props.isLoggedIn} />
+        <Register userId={this.props.userId} isLoggedIn={this.props.isLoggedIn} />
         <div className="selectedDay">
           <div>{this.props.days[this.props.currentDay.getDay()]}</div>
           <div>
@@ -124,6 +129,7 @@ class AppointmentDisplay extends React.Component {
           fetchAppointments={this.props.fetchAppointments}
           currentDay={this.props.currentDay}
           userId={this.props.userId}
+          isLoggedIn={this.props.isLoggedIn} 
         />
         <EditAppointment
           onEdit={this.handleEditModal}

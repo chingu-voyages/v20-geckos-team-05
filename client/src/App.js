@@ -18,18 +18,51 @@ class App extends React.Component {
     image: "",
     footerColor: "",
     userId: "",
+    isLoggedIn: false,
+    usersIds: [],
   };
 
   componentDidMount() {
     this.fetchAppointments();
     this.handleBackgroundImage();
     this.handlefooterColor();
-    const { cookies } = this.props;
+    this.handleCookie();
+    this.matchUserId();
+
+    // const { cookies } = this.props;
     // console.log(cookies);
-    let test = cookies.getAll();
-    console.log(test);
-    // cookies.remove("session");
+    // const { cookies } = this.props;
+    // cookies.remove("user");
+
   }
+
+  handleCookie = () => {
+    const { cookies } = this.props;
+    const userCookie = cookies.get("user");
+    console.log(userCookie);
+    if(userCookie) {
+      this.setState({ isLoggedIn: true });
+
+      this.matchUserId();
+    }
+  }
+
+  matchUserId = () => {
+      fetch(process.env.REACT_APP_API_URL|| "http://localhost:5000/api/users")
+        .then((res) => res.json())
+        .then((data) => console.log(data.user))
+        // .then((users) => {
+        //   console.log(users);
+        //   this.setState(() => ({
+        //     users,
+        //   }));
+        // })
+        .catch((error) => console.log(error));
+    };
+
+    // const correctUser = this.state.usersIds.filter(user => user === userCookie);
+    // this.setState({userdId: correctUser });
+
 
   fetchAppointments = () => {
     fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api")
@@ -81,20 +114,11 @@ class App extends React.Component {
   };
 
   handleLogin = (event, username, password) => {
-    // if()
-    const { cookies } = this.props;
-    let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    cookies.set('session',`${token}`);
-    console.log(cookies);
-
-
     event.preventDefault();
     const userData = {
       username,
       password,
-      cookie: token,
     };
-    // console.log(userData);
     fetch(
       process.env.REACT_APP_API_LOGIN_URL || "http://localhost:5000/api/login",
       {
@@ -105,9 +129,11 @@ class App extends React.Component {
     )
       .then((response) => response.json())
       .then((data) => {
-      console.log(data);
+      // console.log(data);
         if (data.userId) {
           this.setState({ userId: data.userId });
+          const { cookies } = this.props;
+          cookies.set('user',`${data.userId}`);
         }
       })
       .catch((err) => console.log(err));
@@ -141,6 +167,7 @@ class App extends React.Component {
             userId={this.state.userId}
             onLogin={this.handleLogin}
             cookies={this.props.cookies}
+            isLoggedIn={this.state.isLoggedIn}
           />
         </div>
         <Footer footerColor={this.state.footerColor} />

@@ -48,4 +48,14 @@ router.get("/logout", (req, res) => {
   res.send(200);
 });
 
+router.get("/users", async (req, res) => {
+  try {
+    // res.send("this is the message")
+    const users = await User.find({});
+    res.json({ users });
+  } catch (error) {
+    res.json({ error });
+  }
+});
+
 module.exports = router;

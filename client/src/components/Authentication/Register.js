@@ -54,13 +54,13 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-        {!this.props.userId && (
+        {!this.props.isLoggedIn && (
           <button onClick={this.showModal}>Sign up</button>
         )}
         <div
           className={
             this.state.showModal &&
-            !this.props.userId &&
+            !this.props.isLoggedIn &&
             this.state.registered === false
               ? "modal display-block"
               : "modal display-none"

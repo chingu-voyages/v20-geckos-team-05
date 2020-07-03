@@ -24,9 +24,14 @@ class Login extends React.Component {
   };
 
   render() {
+
+    // console.log(this.props.isLoggedIn);
+
+    // console.log(this.props.isLoggedIn);
+    
     return (
       <div>
-        {!this.props.userId && (
+        {!this.props.isLoggedIn && (
           <button onClick={this.showModal}>Sign in</button>
         )}
         <div
