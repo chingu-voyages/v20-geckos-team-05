@@ -42,15 +42,14 @@ class App extends React.Component {
     console.log(userCookie);
     if(userCookie) {
       this.setState({ isLoggedIn: true });
-
-      this.matchUserId();
     }
   }
 
   matchUserId = () => {
-      fetch(process.env.REACT_APP_API_URL|| "http://localhost:5000/api/users")
+      fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/users")
+        // .then((res) => console.log(res.json()))
         .then((res) => res.json())
-        .then((data) => console.log(data.user))
+        .then((data) => console.log(data))
         // .then((users) => {
         //   console.log(users);
         //   this.setState(() => ({

@@ -9,6 +9,15 @@ const validateLoginInput = require("../validation/login");
 // Load User model
 const User = require("../models/User");
 
+router.get("/users", async (req, res) => {
+  try {
+    const user = await User.find({});
+    res.json({ user });
+  } catch (error) {
+    res.json({ error });
+  }
+});
+
 router.post("/register", (req, res) => {
   // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -48,14 +57,6 @@ router.get("/logout", (req, res) => {
   res.send(200);
 });
 
-router.get("/users", async (req, res) => {
-  try {
-    // res.send("this is the message")
-    const users = await User.find({});
-    res.json({ users });
-  } catch (error) {
-    res.json({ error });
-  }
-});
+
 
 module.exports = router;
