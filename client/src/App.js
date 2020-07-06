@@ -19,6 +19,7 @@ class App extends React.Component {
     footerColor: "",
     userId: "",
     isLoggedIn: false,
+    stayLoggedIn: true,
   };
 
   componentDidMount() {
@@ -40,7 +41,7 @@ class App extends React.Component {
           users.map(user => {
             const { cookies } = this.props;
             const userCookie = cookies.get("user");
-            if(user._id ===  userCookie){
+            if(user._id ===  userCookie){ 
               this.setState({ isLoggedIn: true , userId: userCookie})
             }
           })
@@ -115,12 +116,20 @@ class App extends React.Component {
       .then((data) => {
         if (data.userId) {
           this.setState({ userId: data.userId, isLoggedIn: true });
-          const { cookies } = this.props;
-          cookies.set('user',`${data.userId}`);
+          if(this.state.stayLoggedIn) {
+            const { cookies } = this.props;
+            cookies.set('user',`${data.userId}`, { maxAge: 1209600 });
+          }
+
         }
       })
       .catch((err) => console.log(err));
   };
+
+  handleLoggedInState = () => {
+    console.log("i have fired")
+    this.setState({stayLoggedIn: !this.state.stayLoggedIn});
+}
 
   render() {
     const imgStyle = {
@@ -151,6 +160,8 @@ class App extends React.Component {
             onLogin={this.handleLogin}
             cookies={this.props.cookies}
             isLoggedIn={this.state.isLoggedIn}
+            stayLoggedIn={this.state.stayLoggedIn}
+            handleLoggedInState={this.handleLoggedInState}
           />
         </div>
         <Footer footerColor={this.state.footerColor} />

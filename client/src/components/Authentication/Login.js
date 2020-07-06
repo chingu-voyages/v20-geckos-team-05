@@ -6,6 +6,7 @@ class Login extends React.Component {
     username: "",
     password: "",
     showModal: false,
+
   };
   onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
@@ -74,6 +75,18 @@ class Login extends React.Component {
                     type="password"
                   />
                   <label htmlFor="password">Password</label>
+                </div>
+                <div>
+                <input 
+                  type="checkbox" 
+                  id="remember-me" 
+                  name="remember-me" 
+                  value="Yes" 
+                  checked={this.props.stayLoggedIn}
+                  defaultChecked
+                  onChange={this.props.handleLoggedInState}
+                />
+                <label htmlFor="remember-me">Stay logged in?</label>
                 </div>
                 <div>
                   <button type="submit">Login</button>

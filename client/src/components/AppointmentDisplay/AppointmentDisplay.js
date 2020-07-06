@@ -78,7 +78,13 @@ class AppointmentDisplay extends React.Component {
         className="appointmentsDisplayContainer"
         onClick={this.handleEditModal}
       >
-        <Login onLogin={this.props.onLogin} userId={this.props.userId} isLoggedIn={this.props.isLoggedIn} />
+        <Login 
+          onLogin={this.props.onLogin} 
+          userId={this.props.userId} 
+          isLoggedIn={this.props.isLoggedIn} 
+          stayLoggedIn={this.state.stayLoggedIn}
+          handleLoggedInState={this.props.handleLoggedInState}
+        />
         <Register userId={this.props.userId} isLoggedIn={this.props.isLoggedIn} />
         <div className="selectedDay">
           <div>{this.props.days[this.props.currentDay.getDay()]}</div>
