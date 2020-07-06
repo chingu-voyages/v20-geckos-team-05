@@ -100,7 +100,7 @@ class AppointmentDisplay extends React.Component {
           {
           this.props.isLoggedIn && (
             <div className="buttonContainer">
-              <div className="logoutButton">Logout</div>
+              <div className="logoutButton" onClick={this.props.handleLogout}>Logout</div>
             </div>            
             )
           }   

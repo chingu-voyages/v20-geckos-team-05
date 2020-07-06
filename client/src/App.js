@@ -127,8 +127,16 @@ class App extends React.Component {
   };
 
   handleLoggedInState = () => {
-    console.log("i have fired")
     this.setState({stayLoggedIn: !this.state.stayLoggedIn});
+}
+
+handleLogout = () => {
+  const { cookies } = this.props;
+  cookies.remove("user");
+  this.setState({    
+    userId: "",
+    isLoggedIn: false
+  })
 }
 
   render() {
@@ -162,6 +170,7 @@ class App extends React.Component {
             isLoggedIn={this.state.isLoggedIn}
             stayLoggedIn={this.state.stayLoggedIn}
             handleLoggedInState={this.handleLoggedInState}
+            handleLogout={this.handleLogout}
           />
         </div>
         <Footer footerColor={this.state.footerColor} />
