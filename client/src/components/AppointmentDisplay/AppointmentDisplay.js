@@ -85,14 +85,27 @@ class AppointmentDisplay extends React.Component {
           stayLoggedIn={this.state.stayLoggedIn}
           handleLoggedInState={this.props.handleLoggedInState}
         />
-        <Register userId={this.props.userId} isLoggedIn={this.props.isLoggedIn} />
-        <div className="selectedDay">
-          <div>{this.props.days[this.props.currentDay.getDay()]}</div>
-          <div>
-            {this.props.monthsLong[this.props.currentDay.getMonth()]}{" "}
-            {this.props.currentDay.getDate()}{" "}
+        <Register 
+          userId={this.props.userId} 
+          isLoggedIn={this.props.isLoggedIn} 
+        />
+        <div className="AppointmentDisplayheader">
+          <div className="selectedDay">
+            <div>{this.props.days[this.props.currentDay.getDay()]}</div>
+            <div>
+              {this.props.monthsLong[this.props.currentDay.getMonth()]}{" "}
+              {this.props.currentDay.getDate()}{" "}
+            </div>
           </div>
+          {
+          this.props.isLoggedIn && (
+            <div className="buttonContainer">
+              <div className="logoutButton">Logout</div>
+            </div>            
+            )
+          }   
         </div>
+
         <div className="appointmentsListBox">
           <div className="appointmentsList">
             {this.props.appointments

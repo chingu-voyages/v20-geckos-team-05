@@ -5,14 +5,41 @@
     width: 50%;
 }
 
+.AppointmentDisplayheader {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 20%;
+    justify-content: space-between;
+    width: 80%;
+}
+
 .selectedDay {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 18px;
     font-weight: 700;
-    width: 60%;
     align-self: center;
     text-align: left;
+}
+
+.buttonContainer {
+    width: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    border: black 1px solid;
+    border-radius: 3px;
+    text-align: center;
+    height: 20px;
+    padding: 0px 5px 2px 5px;
+    position: relative;
+    right: 5%;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .appointmentsListBox {
