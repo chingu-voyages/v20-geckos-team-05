@@ -9,7 +9,7 @@ const validateLoginInput = require("../validation/login");
 // Load User model
 const User = require("../models/User");
 
-router.get("/users", async (req, res) => {
+router.get("/login/users", async (req, res) => {
   try {
     const user = await User.find({});
     res.json({ user });

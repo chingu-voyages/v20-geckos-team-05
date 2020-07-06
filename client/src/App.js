@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
   matchUserId = () => {
-      fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/users")
+      fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/login/users")
         // .then((res) => console.log(res.json()))
         .then((res) => res.json())
         .then((data) => console.log(data))
