@@ -19,49 +19,34 @@ class App extends React.Component {
     footerColor: "",
     userId: "",
     isLoggedIn: false,
-    usersIds: [],
   };
 
   componentDidMount() {
+
     this.fetchAppointments();
     this.handleBackgroundImage();
     this.handlefooterColor();
-    this.handleCookie();
     this.matchUserId();
-
-    // const { cookies } = this.props;
-    // console.log(cookies);
     // const { cookies } = this.props;
     // cookies.remove("user");
 
   }
 
-  handleCookie = () => {
-    const { cookies } = this.props;
-    const userCookie = cookies.get("user");
-    console.log(userCookie);
-    if(userCookie) {
-      this.setState({ isLoggedIn: true });
-    }
-  }
-
   matchUserId = () => {
       fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/login/users")
-        // .then((res) => console.log(res.json()))
         .then((res) => res.json())
-        .then((data) => console.log(data))
-        // .then((users) => {
-        //   console.log(users);
-        //   this.setState(() => ({
-        //     users,
-        //   }));
-        // })
+        .then((data) => data.user)
+        .then((users) => {
+          users.map(user => {
+            const { cookies } = this.props;
+            const userCookie = cookies.get("user");
+            if(user._id ===  userCookie){
+              this.setState({ isLoggedIn: true , userId: userCookie})
+            }
+          })
+        })
         .catch((error) => console.log(error));
     };
-
-    // const correctUser = this.state.usersIds.filter(user => user === userCookie);
-    // this.setState({userdId: correctUser });
-
 
   fetchAppointments = () => {
     fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api")
@@ -128,9 +113,8 @@ class App extends React.Component {
     )
       .then((response) => response.json())
       .then((data) => {
-      // console.log(data);
         if (data.userId) {
-          this.setState({ userId: data.userId });
+          this.setState({ userId: data.userId, isLoggedIn: true });
           const { cookies } = this.props;
           cookies.set('user',`${data.userId}`);
         }

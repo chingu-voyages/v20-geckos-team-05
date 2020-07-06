@@ -73,12 +73,6 @@ class AppointmentDisplay extends React.Component {
   };
 
   render() {
-
-    // console.log(this.props.appointments);
-    // console.log(this.props.cookies);
-    // const { cookies } = this.props;
-    // const userCookie = cookies.get("user");
-
     return (
       <div
         className="appointmentsDisplayContainer"
