@@ -1,4 +1,5 @@
 import React from "react";
+import { withCookies } from 'react-cookie';
 import "./App.css";
 
 import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
@@ -17,13 +18,36 @@ class App extends React.Component {
     image: "",
     footerColor: "",
     userId: "",
+    isLoggedIn: false,
+    stayLoggedIn: true,
   };
 
   componentDidMount() {
+
     this.fetchAppointments();
     this.handleBackgroundImage();
     this.handlefooterColor();
+    this.matchUserId();
+    // const { cookies } = this.props;
+    // cookies.remove("user");
+
   }
+
+  matchUserId = () => {
+      fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/login/users")
+        .then((res) => res.json())
+        .then((data) => data.user)
+        .then((users) => {
+          users.map(user => {
+            const { cookies } = this.props;
+            const userCookie = cookies.get("user");
+            if(user._id ===  userCookie){ 
+              this.setState({ isLoggedIn: true , userId: userCookie})
+            }
+          })
+        })
+        .catch((error) => console.log(error));
+    };
 
   fetchAppointments = () => {
     fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api")
@@ -91,11 +115,29 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         if (data.userId) {
-          this.setState({ userId: data.userId });
+          this.setState({ userId: data.userId, isLoggedIn: true });
+          if(this.state.stayLoggedIn) {
+            const { cookies } = this.props;
+            cookies.set('user',`${data.userId}`, { maxAge: 1209600 });
+          }
+
         }
       })
       .catch((err) => console.log(err));
   };
+
+  handleLoggedInState = () => {
+    this.setState({stayLoggedIn: !this.state.stayLoggedIn});
+}
+
+handleLogout = () => {
+  const { cookies } = this.props;
+  cookies.remove("user");
+  this.setState({    
+    userId: "",
+    isLoggedIn: false
+  })
+}
 
   render() {
     const imgStyle = {
@@ -124,6 +166,11 @@ class App extends React.Component {
             days={this.props.days}
             userId={this.state.userId}
             onLogin={this.handleLogin}
+            cookies={this.props.cookies}
+            isLoggedIn={this.state.isLoggedIn}
+            stayLoggedIn={this.state.stayLoggedIn}
+            handleLoggedInState={this.handleLoggedInState}
+            handleLogout={this.handleLogout}
           />
         </div>
         <Footer footerColor={this.state.footerColor} />
@@ -172,4 +219,4 @@ App.defaultProps = {
   ],
 };
 
-export default App;
+export default withCookies(App);

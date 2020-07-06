@@ -78,15 +78,34 @@ class AppointmentDisplay extends React.Component {
         className="appointmentsDisplayContainer"
         onClick={this.handleEditModal}
       >
-        <Login onLogin={this.props.onLogin} userId={this.props.userId} />
-        <Register userId={this.props.userId} />
-        <div className="selectedDay">
-          <div>{this.props.days[this.props.currentDay.getDay()]}</div>
-          <div>
-            {this.props.monthsLong[this.props.currentDay.getMonth()]}{" "}
-            {this.props.currentDay.getDate()}{" "}
+        <Login 
+          onLogin={this.props.onLogin} 
+          userId={this.props.userId} 
+          isLoggedIn={this.props.isLoggedIn} 
+          stayLoggedIn={this.state.stayLoggedIn}
+          handleLoggedInState={this.props.handleLoggedInState}
+        />
+        <Register 
+          userId={this.props.userId} 
+          isLoggedIn={this.props.isLoggedIn} 
+        />
+        <div className="AppointmentDisplayheader">
+          <div className="selectedDay">
+            <div>{this.props.days[this.props.currentDay.getDay()]}</div>
+            <div>
+              {this.props.monthsLong[this.props.currentDay.getMonth()]}{" "}
+              {this.props.currentDay.getDate()}{" "}
+            </div>
           </div>
+          {
+          this.props.isLoggedIn && (
+            <div className="buttonContainer">
+              <div className="logoutButton" onClick={this.props.handleLogout}>Logout</div>
+            </div>            
+            )
+          }   
         </div>
+
         <div className="appointmentsListBox">
           <div className="appointmentsList">
             {this.props.appointments
@@ -123,6 +142,7 @@ class AppointmentDisplay extends React.Component {
           fetchAppointments={this.props.fetchAppointments}
           currentDay={this.props.currentDay}
           userId={this.props.userId}
+          isLoggedIn={this.props.isLoggedIn} 
         />
         <EditAppointment
           onEdit={this.handleEditModal}
