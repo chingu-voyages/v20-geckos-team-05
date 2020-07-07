@@ -47,7 +47,7 @@ class Modal extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    if (!this.state.title ) {
+    if (!this.state.title) {
       this.setState({ isError: true });
     } else {
       const appointment = {
@@ -85,10 +85,13 @@ class Modal extends React.Component {
   };
 
   render() {
-
     return (
       <div>
-        {this.props.isLoggedIn && <div className="addButton" onClick={this.showModal}>Add</div>}
+        {this.props.isLoggedIn && (
+          <div className="addButton" onClick={this.showModal}>
+            Add
+          </div>
+        )}
         <div
           className={
             this.state.showModal ? "modal display-block" : "modal display-none"
@@ -161,10 +164,10 @@ class Modal extends React.Component {
                         type="time"
                         name="begins"
                         onChange={this.handleChange}
-                        value={this.state.begins
-                          ? this.state.begins 
-                          : `${this.props.currentDay.getHours()}:${
-                              this.props.currentDay.getMinutes()}`
+                        value={
+                          this.state.begins
+                            ? this.state.begins
+                            : `${this.props.currentDay.getHours()}:${this.props.currentDay.getMinutes()}`
                         }
                       ></input>
                     </div>
@@ -174,10 +177,12 @@ class Modal extends React.Component {
                         type="time"
                         name="ends"
                         onChange={this.handleChange}
-                        value={this.state.ends
-                          ? this.state.ends
-                          : `${this.props.currentDay.getHours()}:${
-                              this.props.currentDay.getMinutes() + 30}`
+                        value={
+                          this.state.ends
+                            ? this.state.ends
+                            : `${this.props.currentDay.getHours()}:${
+                                this.props.currentDay.getMinutes() + 30
+                              }`
                         }
                       ></input>
                     </div>
