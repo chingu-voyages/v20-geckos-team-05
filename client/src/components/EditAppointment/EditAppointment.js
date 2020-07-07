@@ -181,11 +181,9 @@ class EditAppointment extends React.Component {
                     </div>
                   </div>
                 </div>
-                {/* <div className="buttonGroup"> */}
                 <div className="submitButton">
                   <button>Update</button>
                 </div>
-                {/* </div> */}
                 <div className="deleteButton" onClick={this.handleDelete}>
                   Delete
                 </div>
