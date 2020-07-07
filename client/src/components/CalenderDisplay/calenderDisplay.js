@@ -39,7 +39,7 @@ class CalenderDisplay extends React.Component {
       prevDays.push(numOfDaysPrevMonth);
       numOfDaysPrevMonth--;
     }
-
+    let constPrevDays = [...prevDays];
     const filteredAppointments = this.props.appointments.filter(
       (appointment) => appointment.userId === this.props.userId
     );
@@ -93,7 +93,7 @@ class CalenderDisplay extends React.Component {
       } else {
         let todaySelected = false;
         if (
-          i === today.getDate() &&
+          i === today.getDate() + (constPrevDays.length - 1) &&
           this.state.currentMonth === today.getMonth() &&
           this.state.currentYear === today.getFullYear()
         ) {
