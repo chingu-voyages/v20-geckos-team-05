@@ -68,7 +68,7 @@ class EditAppointment extends React.Component {
   handleDelete = async (event) => {
     const id = event.target.parentNode.getAttribute("listid");
     let url = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
-    if (window.confirm("sure?")) {
+    if (window.confirm("Are you sure you want to delete this appointment?")) {
       await fetch(`${url}/${id}`, {
         method: "DELETE",
       });
