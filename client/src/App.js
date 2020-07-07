@@ -1,5 +1,5 @@
 import React from "react";
-import { withCookies } from 'react-cookie';
+import { withCookies } from "react-cookie";
 import "./App.css";
 
 import CalenderDisplay from "./components/CalenderDisplay/calenderDisplay";
@@ -23,31 +23,32 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-
     this.fetchAppointments();
     this.handleBackgroundImage();
     this.handlefooterColor();
     this.matchUserId();
     // const { cookies } = this.props;
     // cookies.remove("user");
-
   }
 
   matchUserId = () => {
-      fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api/login/users")
-        .then((res) => res.json())
-        .then((data) => data.user)
-        .then((users) => {
-          users.map(user => {
-            const { cookies } = this.props;
-            const userCookie = cookies.get("user");
-            if(user._id ===  userCookie){ 
-              this.setState({ isLoggedIn: true , userId: userCookie})
-            }
-          })
-        })
-        .catch((error) => console.log(error));
-    };
+    fetch(
+      process.env.REACT_APP_API_USERS_URL ||
+        "http://localhost:5000/api/login/users"
+    )
+      .then((res) => res.json())
+      .then((data) => data.user)
+      .then((users) => {
+        users.forEach((user) => {
+          const { cookies } = this.props;
+          const userCookie = cookies.get("user");
+          if (user._id === userCookie) {
+            this.setState({ isLoggedIn: true, userId: userCookie });
+          }
+        });
+      })
+      .catch((error) => console.log(error));
+  };
 
   fetchAppointments = () => {
     fetch(process.env.REACT_APP_API_URL || "http://localhost:5000/api")
@@ -116,28 +117,27 @@ class App extends React.Component {
       .then((data) => {
         if (data.userId) {
           this.setState({ userId: data.userId, isLoggedIn: true });
-          if(this.state.stayLoggedIn) {
+          if (this.state.stayLoggedIn) {
             const { cookies } = this.props;
-            cookies.set('user',`${data.userId}`, { maxAge: 1209600 });
+            cookies.set("user", `${data.userId}`, { maxAge: 1209600 });
           }
-
         }
       })
       .catch((err) => console.log(err));
   };
 
   handleLoggedInState = () => {
-    this.setState({stayLoggedIn: !this.state.stayLoggedIn});
-}
+    this.setState({ stayLoggedIn: !this.state.stayLoggedIn });
+  };
 
-handleLogout = () => {
-  const { cookies } = this.props;
-  cookies.remove("user");
-  this.setState({    
-    userId: "",
-    isLoggedIn: false
-  })
-}
+  handleLogout = () => {
+    const { cookies } = this.props;
+    cookies.remove("user");
+    this.setState({
+      userId: "",
+      isLoggedIn: false,
+    });
+  };
 
   render() {
     const imgStyle = {

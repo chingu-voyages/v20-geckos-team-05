@@ -47,6 +47,8 @@
   justify-self: center;
 }
 
+
+
 .prevButton {
   width: 30px;
   height: 30px;
@@ -80,7 +82,8 @@
 }
 
 .indicator {
-  outline: 2px solid red;
+  border: 2px solid orange;
+  border-radius: 50%;
 }
 
 @media only screen and (max-width: 400px) {

@@ -1,0 +1,29 @@
+.submitButton {
+    position: relative;
+    right: 80px;
+} 
+
+.deleteButton {
+    position: relative;
+    left: 410px;
+    bottom: 25px;
+    color: white;
+    background-color: red;
+    border: black 1px solid;
+    border-radius: 3px;
+    text-align: center;
+    height: 20px;
+    width: 109px;
+    padding: 1.5px 5px 1.5px 5px;
+    font-size: 15px;
+    /* right: 5%; */
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 400px) {
+    .deleteButton {
+        left: 120px;
+        bottom: -30px;
+    }
+}
