@@ -1,3 +1,27 @@
+.signInButton {
+    display: flex;
+    align-items: center;
+    border: black 1px solid;
+    border-radius: 3px;
+    text-align: center;
+    height: 20px;
+    padding: 0px 5px 2px 5px;
+    position: relative;
+    right: 5%;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.closeButton {
+  position: relative;
+  float: right;
+  right: 5px;
+  top: 2px;
+  padding: 2px;
+  cursor: pointer;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -5,6 +29,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
 }
 
 .modalMain {
@@ -18,15 +43,38 @@
   border-radius: 5px;
 }
 
-form {
-  padding-top: 0;
-  margin-top: -10px;
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 60%
 }
 
-.closeButton {
-  position: relative;
-  float: right;
-  right: 5px;
-  top: 2px;
-  padding: 2px;
+.formElement {
+ margin: 8px 0px 5px 0px;
 }
+
+.userName label {
+  margin-right: 3px;
+
+}
+
+.password label {
+  margin-right: 6px;
+}
+
+form {
+  padding-top: 0;
+  margin-top: 20px;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+

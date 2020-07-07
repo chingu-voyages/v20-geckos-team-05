@@ -33,7 +33,7 @@ class Login extends React.Component {
     return (
       <div>
         {!this.props.isLoggedIn && (
-          <button onClick={this.showModal}>Sign in</button>
+          <div className="signInButton" onClick={this.showModal}>Sign in</div>
         )}
         <div
           className={
@@ -47,7 +47,7 @@ class Login extends React.Component {
               <div className="closeButton" onClick={this.hideModal}>
                 <strong>X</strong>
               </div>
-
+              <div className="formContainer">
               <form
                 noValidate
                 onSubmit={(e) =>
@@ -58,25 +58,27 @@ class Login extends React.Component {
                   )
                 }
               >
-                <div>
+                <div className="userName formElement">
+                <label htmlFor="username">Username:</label>
                   <input
                     onChange={this.onChange}
                     value={this.state.username}
                     id="username"
                     type="username"
                   />
-                  <label htmlFor="username">Username</label>
+
                 </div>
-                <div>
+                <div className="password formElement">
+                <label htmlFor="password">Password:</label>
                   <input
                     onChange={this.onChange}
                     value={this.state.password}
                     id="password"
                     type="password"
                   />
-                  <label htmlFor="password">Password</label>
+
                 </div>
-                <div>
+                <div className='formElement'> 
                 <input 
                   type="checkbox" 
                   id="remember-me" 
@@ -88,10 +90,11 @@ class Login extends React.Component {
                 />
                 <label htmlFor="remember-me">Stay logged in?</label>
                 </div>
-                <div>
+                <div className='formElement'>
                   <button type="submit">Login</button>
                 </div>
               </form>
+              </div>
             </section>
           )}
         </div>
