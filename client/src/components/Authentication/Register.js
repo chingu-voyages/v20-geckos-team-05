@@ -1,4 +1,5 @@
 import React from "react";
+import "./Register.css";
 
 class Register extends React.Component {
   state = {
@@ -55,7 +56,7 @@ class Register extends React.Component {
     return (
       <div>
         {!this.props.isLoggedIn && (
-          <button onClick={this.showModal}>Sign up</button>
+          <div className="signUpButton" onClick={this.showModal}>Sign up</div>
         )}
         <div
           className={
@@ -71,30 +72,31 @@ class Register extends React.Component {
               <div className="closeButton" onClick={this.hideModal}>
                 <strong>X</strong>
               </div>
-
-              <form noValidate onSubmit={this.onSubmit}>
-                <div>
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.username}
-                    id="username"
-                    type="text"
-                  />
-                  <label htmlFor="username">Username</label>
-                </div>
-                <div>
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.password}
-                    id="password"
-                    type="password"
-                  />
-                  <label htmlFor="password">Password</label>
-                </div>
-                <div>
-                  <button type="submit">Sign up</button>
-                </div>
-              </form>
+              <div className="formContainer">
+                <form noValidate onSubmit={this.onSubmit}>
+                <div className="userName formElement">
+                  <label htmlFor="username">Username:</label>
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.username}
+                      id="username"
+                      type="text"
+                    />
+                  </div>
+                  <div className="password formElement">
+                  <label htmlFor="password">Password:</label>
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.password}
+                      id="password"
+                      type="password"
+                    />
+                  </div>
+                  <div className='formElement'>
+                    <button type="submit">Sign up</button>
+                  </div>
+                </form>
+              </div>
             </section>
           )}
         </div>
