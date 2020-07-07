@@ -88,7 +88,7 @@ class Modal extends React.Component {
 
     return (
       <div>
-        {this.props.isLoggedIn && <button onClick={this.showModal}>Add</button>}
+        {this.props.isLoggedIn && <div className="addButton" onClick={this.showModal}>Add</div>}
         <div
           className={
             this.state.showModal ? "modal display-block" : "modal display-none"

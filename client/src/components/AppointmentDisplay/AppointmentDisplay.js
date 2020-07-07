@@ -18,18 +18,6 @@ class AppointmentDisplay extends React.Component {
     appointment: {},
   };
 
-  handleDelete = async (event) => {
-    const id = event.target.parentNode.getAttribute("listid");
-    let url = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
-    if (window.confirm("sure?")) {
-      await fetch(`${url}/${id}`, {
-        method: "DELETE",
-      });
-      await this.props.fetchAppointments();
-      this.forceUpdate();
-    }
-  };
-
   sortByDate = (a, b) => {
     const dateA = a.startDate;
     const dateB = b.startDate;
@@ -124,7 +112,6 @@ class AppointmentDisplay extends React.Component {
                   key={appointment._id}
                   listid={appointment._id}
                 >
-                  <span onClick={this.handleDelete}>X </span>
                   {appointment.begins.substring(11, 16)} {appointment.title}
                 </div>
               ))}
