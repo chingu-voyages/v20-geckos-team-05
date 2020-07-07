@@ -3,28 +3,25 @@
   height: 100%;
 }
 
-.calenderDisplay {
-}
-
 .currentYear {
   margin-bottom: 5px;
   margin-top: 5px;
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 700;
   text-align: center;
 }
 
 .monthsDisplay {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 20px;
 }
 
-.prevMonth {
-}
-
-.nextMonth {
+.currentMonth {
+  transform: scale(1.15);
+  font-weight: bold;
+  padding-bottom: 1px;
 }
 
 .daysOfWeekDisplay {
@@ -32,11 +29,12 @@
   margin-right: 40px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 45px);
+  grid-template-rows: 35px repeat(5, 45px);
 }
 
 .dayOfWeek {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .day {
@@ -61,8 +59,28 @@
   transform: translate(310px, -232px);
 }
 
+.today {
+  color: blue;
+  font-weight: 700;
+}
+
 .selected {
-  color: red;
+  background-color: black;
+  color: white;
+  text-align: center;
+  transform: translate(1px, 1px);
+  height: 19px;
+  width: 20px;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.apart {
+  color: lightgrey;
+}
+
+.indicator {
+  outline: 2px solid red;
 }
 
 @media only screen and (max-width: 400px) {
@@ -76,13 +94,22 @@
     width: inherit;
   }
 
+  .daysOfWeekDisplay {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 35px);
+  }
+
   .nextButton {
-    transform: translate(300px, -223px);
+    transform: translate(306px, -172px);
     width: 20px;
     height: 20px;
   }
 
   .prevButton {
+    transform: translate(5px, -150px);
     width: 20px;
     height: 20px;
   }

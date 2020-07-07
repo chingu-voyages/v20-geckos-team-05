@@ -12,9 +12,16 @@
   background: white;
   width: 680px;
   height: 330px;
-  top: 51.5%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 5px;
+
+}
+
+form {
+  padding-top: 0;
+  margin-top: -10px;
 }
 
 .closeButton {
@@ -215,15 +222,26 @@ button {
   display: none;
 }
 
-.error {
+.errorMessage {
+  padding-top: 10px;
   color: red;
+  font-weight: 700;
+  padding-left: 50px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.error {
+  border: solid 2px red;
+  border-radius: 3px;
 }
 
 @media only screen and (max-width: 400px) {
   .modalMain {
     width: 90vw;
-    height: 65vh;
-    bottom: 25%;
+    height: 80vh;
+    top: 40%;
+    left: 42%;
   }
 
   .appointmentTitle label {
@@ -307,7 +325,17 @@ button {
     height: 25px;
   }
 
+  .errorMessage {
+    padding-top: 25px;
+    font-size: 10px;
+    padding-left: 10px;
+
+  }
+
   .submitButton {
     margin-top: 30px;
+  }
+  button{
+    margin-bottom: 10px;
   }
 }

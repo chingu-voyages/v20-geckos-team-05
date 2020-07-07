@@ -12,6 +12,8 @@ class Modal extends React.Component {
     people: "",
     location: "",
     description: "",
+    isError: false,
+    errorMessage: "** Please complete the highlighted sections below **",
     errorTitle: "",
     errorStartDate: "",
     errorEndDate: "",
@@ -34,6 +36,7 @@ class Modal extends React.Component {
       people: "",
       location: "",
       description: "",
+      isError: false,
       errorTitle: "",
       errorStartDate: "",
       errorEndDate: "",
@@ -42,81 +45,50 @@ class Modal extends React.Component {
     });
   };
 
-  validate = () => {
-    let errorTitle = "";
-    let errorStartDate = "";
-    let errorEndDate = "";
-    let errorBegins = "";
-    let errorEnds = "";
-    if (!this.state.title) {
-      errorTitle = "Enter a title";
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!this.state.title ) {
+      this.setState({ isError: true });
+    } else {
+      const appointment = {
+        title: event.target.title.value,
+        startDate: `${event.target.startDate.value}T${event.target.begins.value}`,
+        endDate: `${event.target.endDate.value}T${event.target.ends.value}`,
+        begins: `${event.target.startDate.value}T${event.target.begins.value}`,
+        ends: `${event.target.endDate.value}T${event.target.ends.value}`,
+        people: event.target.people.value,
+        location: event.target.location.value,
+        description: event.target.description.value,
+        userId: this.props.userId,
+      };
+      try {
+        await fetch(
+          process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(appointment),
+          }
+        );
+        console.log(appointment);
+        this.setState({ showModal: false });
+        this.props.fetchAppointments();
+        this.hideModal();
+      } catch (error) {
+        console.log(error);
+      }
     }
-    if (!this.state.startDate) {
-      errorStartDate = "Enter a start date";
-    }
-    if (!this.state.endDate) {
-      errorEndDate = "Enter an end date";
-    }
-    if (!this.state.begins) {
-      errorBegins = "Enter a begin time";
-    }
-    if (!this.state.ends) {
-      errorEnds = "Enter an end time";
-    }
-
-    if (
-      errorTitle ||
-      errorStartDate ||
-      errorEndDate ||
-      errorBegins ||
-      errorEnds
-    ) {
-      this.setState({
-        errorTitle,
-        errorStartDate,
-        errorEndDate,
-        errorBegins,
-        errorEnds,
-      });
-      return false;
-    }
-    return true;
   };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    const appointment = {
-      title: event.target.title.value,
-      startDate: `${event.target.startDate.value}T${event.target.begins.value}`,
-      endDate: `${event.target.endDate.value}T${event.target.ends.value}`,
-      begins: `${event.target.startDate.value}T${event.target.begins.value}`,
-      ends: `${event.target.endDate.value}T${event.target.ends.value}`,
-      people: event.target.people.value,
-      location: event.target.location.value,
-      description: event.target.description.value,
-    };
-    if (this.validate()) {
-      await fetch(
-        process.env.REACT_APP_API_URL || "http://localhost:5000/api",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(appointment),
-        }
-      );
-      this.setState({ showModal: false });
-      this.props.fetchAppointments();
-    }
-  };
-
   render() {
+
     return (
       <div>
-        <button onClick={this.showModal}>Add</button>
+        {this.props.isLoggedIn && <button onClick={this.showModal}>Add</button>}
         <div
           className={
             this.state.showModal ? "modal display-block" : "modal display-none"
@@ -127,16 +99,17 @@ class Modal extends React.Component {
               <div className="closeButton" onClick={this.hideModal}>
                 <strong>X</strong>
               </div>
-              <span className="error">{this.state.errorTitle} </span>
-              <span className="error">{this.state.errorStartDate} </span>
-              <span className="error">{this.state.errorEndDate} </span>
-              <span className="error">{this.state.errorBegins} </span>
-              <span className="error">{this.state.errorEnds}</span>
+              {this.state.isError && (
+                <div className="errorMessage">{this.state.errorMessage}</div>
+              )}
               <form onSubmit={(e) => this.handleSubmit(e)}>
                 <div className="entryContainer">
                   <div className="appointmentTitle">
                     <label>Title *</label>
                     <input
+                      className={
+                        this.state.isError && !this.state.title ? "error" : ""
+                      }
                       type="text"
                       name="title"
                       onChange={this.handleChange}
@@ -150,7 +123,15 @@ class Modal extends React.Component {
                         type="date"
                         name="startDate"
                         onChange={this.handleChange}
-                        value={this.state.startDate}
+                        value={
+                          this.state.startDate
+                            ? this.state.startDate
+                            : `${this.props.currentDay.getFullYear()}-${
+                                this.props.currentDay.getMonth() < 9 ? "0" : ""
+                              }${this.props.currentDay.getMonth() + 1}-${
+                                this.props.currentDay.getDate() < 10 ? "0" : ""
+                              }${this.props.currentDay.getDate()}`
+                        }
                       ></input>
                     </div>
                     <div className="endDate ">
@@ -159,7 +140,17 @@ class Modal extends React.Component {
                         type="date"
                         name="endDate"
                         onChange={this.handleChange}
-                        value={this.state.endDate}
+                        value={
+                          this.state.endDate
+                            ? this.state.endDate
+                            : this.state.startDate
+                            ? this.state.startDate
+                            : `${this.props.currentDay.getFullYear()}-${
+                                this.props.currentDay.getMonth() < 9 ? "0" : ""
+                              }${this.props.currentDay.getMonth() + 1}-${
+                                this.props.currentDay.getDate() < 10 ? "0" : ""
+                              }${this.props.currentDay.getDate()}`
+                        }
                       ></input>
                     </div>
                   </div>
@@ -170,7 +161,11 @@ class Modal extends React.Component {
                         type="time"
                         name="begins"
                         onChange={this.handleChange}
-                        value={this.state.begins}
+                        value={this.state.begins
+                          ? this.state.begins 
+                          : `${this.props.currentDay.getHours()}:${
+                              this.props.currentDay.getMinutes()}`
+                        }
                       ></input>
                     </div>
                     <div className="endTime">
@@ -179,7 +174,11 @@ class Modal extends React.Component {
                         type="time"
                         name="ends"
                         onChange={this.handleChange}
-                        value={this.state.ends}
+                        value={this.state.ends
+                          ? this.state.ends
+                          : `${this.props.currentDay.getHours()}:${
+                              this.props.currentDay.getMinutes() + 30}`
+                        }
                       ></input>
                     </div>
                   </div>
