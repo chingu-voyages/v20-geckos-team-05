@@ -1,6 +1,6 @@
 .submitButton {
     position: relative;
-    right: 80px;
+    left: -80px;
 } 
 
 .deleteButton {
