@@ -1,4 +1,5 @@
 import React from "react";
+import './EditAppointment.css';
 
 class EditAppointment extends React.Component {
   state = {
@@ -61,6 +62,18 @@ class EditAppointment extends React.Component {
       } catch (error) {
         console.log(error);
       }
+    }
+  };
+
+  handleDelete = async (event) => {
+    const id = event.target.parentNode.getAttribute("listid");
+    let url = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+    if (window.confirm("sure?")) {
+      await fetch(`${url}/${id}`, {
+        method: "DELETE",
+      });
+      await this.props.fetchAppointments();
+      this.forceUpdate();
     }
   };
 
@@ -168,9 +181,12 @@ class EditAppointment extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="submitButton">
-                  <button>Edit Appointment</button>
-                </div>
+                {/* <div className="buttonGroup"> */}
+                  <div className="submitButton">
+                    <button>Update</button>
+                  </div>
+                {/* </div> */}
+                    <div className="deleteButton" onClick={this.handleDelete}>Delete</div>
               </form>
             </section>
           )}
