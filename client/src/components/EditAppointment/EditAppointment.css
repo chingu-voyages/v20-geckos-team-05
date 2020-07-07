@@ -12,8 +12,8 @@
     border: black 1px solid;
     border-radius: 3px;
     text-align: center;
-    height: 21px;
-    width: 110px;
+    height: 20px;
+    width: 109px;
     padding: 1.5px 5px 1.5px 5px;
     font-size: 15px;
     /* right: 5%; */
@@ -21,3 +21,9 @@
     cursor: pointer;
 }
 
+@media only screen and (max-width: 400px) {
+    .deleteButton {
+        left: 120px;
+        bottom: -30px;
+    }
+}

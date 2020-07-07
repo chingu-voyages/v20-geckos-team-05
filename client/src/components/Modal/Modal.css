@@ -219,12 +219,16 @@ form {
 
 .submitButton {
   margin-top: 20px;
+  position: relative;
+  left: 0%
 }
 
 button {
   width: 120px;
   height: 25px;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+  /* position: relative; */
+  /* left: 20%; */
 }
 
 .display-block {
@@ -249,7 +253,7 @@ button {
   border-radius: 3px;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .modalMain {
     width: 90vw;
     height: 80vh;
@@ -348,7 +352,7 @@ button {
   .submitButton {
     margin-top: 30px;
   }
-  button{
+  .addButton{
     margin-bottom: 10px;
   }
 }
