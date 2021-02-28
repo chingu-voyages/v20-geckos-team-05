@@ -47,8 +47,6 @@
   justify-self: center;
 }
 
-
-
 .prevButton {
   width: 30px;
   height: 30px;
@@ -106,7 +104,7 @@
   }
 
   .nextButton {
-    transform: translate(306px, -172px);
+    transform: translate(316px, -170px);
     width: 20px;
     height: 20px;
   }
